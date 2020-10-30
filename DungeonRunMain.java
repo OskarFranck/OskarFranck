@@ -1,4 +1,5 @@
 package com.company;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class DungeonRunMain {
@@ -29,7 +30,7 @@ public class DungeonRunMain {
 
                 break;
             default:
-                System.out.println("\tError: please insert a valid number from the menu shown");
+                System.out.println("\n\tError: please insert a valid number from the menu shown");
                 break;
         }
     }
@@ -51,9 +52,8 @@ public class DungeonRunMain {
                 userInput = sc.nextInt();
                 return userInput;
 
-            } catch (Exception allExceptions){
-                System.out.println("\t\nError: please insert a valid number from the menu shown");
-                return userInput = 0;
+            } catch (InputMismatchException allExceptions){
+                return userInput = 9;
             }
     }
 }
