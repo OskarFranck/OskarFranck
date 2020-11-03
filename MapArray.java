@@ -114,7 +114,7 @@ public class MapArray {
         System.out.println("[3] Big Map");
         System.out.println("[0] Exit");
         System.out.println("\nChoose: ");
-        int choice = Main.intInputMethod();
+        int choice = DungeonRunMain.intInputMethod();
 
         return choice;
     }
@@ -128,7 +128,7 @@ public class MapArray {
         System.out.println("[0] Exit");
         System.out.println("\nChoose: ");
         //Denna metod kallas på i Mainmetoden för att bruka Scanner.
-        int choice2 = Main.intInputMethod();
+        int choice2 = DungeonRunMain.intInputMethod();
 
         return choice2;
     }
