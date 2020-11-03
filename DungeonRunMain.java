@@ -20,7 +20,7 @@ public class DungeonRunMain {
     public static void mainMenuSwitch(int mainMenuChoice){
         switch (mainMenuChoice){
             case 1:
-
+                Treasuregenerator.treasureGenerator();
                 break;
             case 2:
 
