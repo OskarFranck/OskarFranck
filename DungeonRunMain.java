@@ -26,6 +26,13 @@ public class DungeonRunMain {
             case 2:
 
                 break;
+
+            case 3:
+                int[][] map = MapArray.createMap(MapArray.menu());
+                MapArray.displayMap(map);
+                int[][] mapPosition = MapArray.enter(MapArray.menu2());
+
+                break;
             case 0:
 
                 break;
@@ -38,8 +45,9 @@ public class DungeonRunMain {
     public static int mainMenuPrint(){
         System.out.println("\n\tWelcome to Dungeon Run");
         System.out.println("\n\t[1] Create new character");
-        System.out.println("\t[2] Load an existing character");
-        System.out.println("\t[0] Exit program");
+        System.out.println("\n\t[2] Load an existing character");
+        System.out.println("\n\t[3] Create a new map");
+        System.out.println("\n\t[0] Exit program");
         System.out.print("\tAccess menu: ");
         int mainMenuChoice = intInputMethod();
         return mainMenuChoice;
