@@ -47,31 +47,27 @@ public class MapArray {
     }
 
     public static int[][] enter(int choice2){
-
+        int[][] mapPosition = {{}};
         if (choice2 == 1) {
             //Startar äventyret från övre vänstra rummet | Testar även programmet som ett litert äventyr
-            int[][] mapPosition = {{1},{1}};
+            mapPosition = new int[][]{{1},{1}};
             System.out.println("Displays map position: top left room = " + mapPosition[0][0]);
-            return mapPosition;
         } else if (choice2 == 2) {
             //Startar äventyret från övre högra rummet
-            int[][] mapPosition = {{1},{4}};
-            System.out.println("Displays top right room");
-            return mapPosition;
+            mapPosition = new int[][]{{1},{4}};
+            System.out.println("Displays top right room" + mapPosition[0][0]);
         } else if (choice2 == 3) {
             //Startar äventyret från nedre vänstra rummet
-            int[][] mapPosition = {{4},{1}};
-            System.out.println("Displays bottom left room");
-            return mapPosition;
+            mapPosition = new int[][]{{4},{1}};
+            System.out.println("Displays bottom left room" + mapPosition[0][0]);
         } else if (choice2 == 4) {
             //Startar äventyret från nedre högra rummet
-            int[][] mapPosition = {{4},{4}};
-            System.out.println("Displays bottom right room");
-            return mapPosition;
+            mapPosition = new int[][]{{4},{4}};
+            System.out.println("Displays bottom right room" + mapPosition[0][0]);
         } else {
             System.out.println("No valid Entery");
-            return null;
         }
+        return mapPosition;
     }
         /*
         switch (choice2) {
@@ -107,7 +103,7 @@ public class MapArray {
 
         }*/
 
-    public static int menu(){
+    public static int menuMap(){
         System.out.println("\nChoose the size of your map:");
         System.out.println("[1] Small Map");
         System.out.println("[2] Medium Map");
@@ -119,7 +115,7 @@ public class MapArray {
         return choice;
     }
 
-    public static int menu2(){
+    public static int menu2Map(){
         System.out.println("\nSelect your position by typing in one of the following rooms: ");
         System.out.println("[1] Top Left Room");
         System.out.println("[2] Top Right Room");

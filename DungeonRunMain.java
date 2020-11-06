@@ -20,20 +20,20 @@ public class DungeonRunMain {
     public static void mainMenuSwitch(int mainMenuChoice){
         switch (mainMenuChoice){
             case 1:
-
+                System.out.println("Creating new character");
                 break;
             case 2:
-
+                System.out.println("Loading character");
                 break;
 
             case 3:
-                int[][] map = MapArray.createMap(MapArray.menu());
+                int[][] map = MapArray.createMap(MapArray.menuMap());
                 MapArray.displayMap(map);
-                int[][] mapPosition = MapArray.enter(MapArray.menu2());
+                int[][] mapPosition = MapArray.enter(MapArray.menu2Map());
 
                 break;
             case 0:
-
+                exit();
                 break;
             default:
                 System.out.println("\n\tError: please insert a valid number from the menu shown");
@@ -58,9 +58,13 @@ public class DungeonRunMain {
                 Scanner sc = new Scanner(System.in);
                 userInput = sc.nextInt();
                 return userInput;
-
             } catch (InputMismatchException allExceptions){
                 return userInput = 9;
             }
     }
+
+    public static void exit() {
+        System.out.println("Exiting the dungeon.");
+    }
+
 }
