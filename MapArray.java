@@ -15,7 +15,103 @@ public class MapArray {
 
     //2. Nästa steg är att starta ett äventyr. Spelaren väljer storlek på äventyret; litet, lagom eller stort
     //Valen för detta hittas i metoden Menu
-    public static int[][] createMap(int choice) {
+    public static String[][] createMap(int choice) {
+        String[][] map = new String[0][0];
+        if (choice == 1) {              //Karta med 4x4 rum (Yttre arrays bildar väggar)
+            String[][] smallMap = new String[6][6];
+            System.out.println("This is the Small Map;");
+            map = smallMap;
+            //Bygga upp rummen
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 6; j++) {
+                    map[i][j] = "[ ]\t";
+                }
+            }
+            //Placera ut väggarna
+            for (int i = 0; i < 6; i++) {
+                for (int j = 0; j < 6; j++) {
+                    map[j][0] = "☠\t";
+                    map[j][5] = "☠\t";
+                    map[0][i] = "☠\t";
+                    map[5][i] = "☠\t";
+                }
+            }
+        } else if (choice == 2) {       //Karta med 5x5 rum
+            String[][] mediumMap = new String[7][7];
+            System.out.println("This is the Medium Map;");
+            map = mediumMap;
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 7; j++) {
+                    map[i][j] = "[ ]\t";
+                }
+            }
+            for (int i = 0; i < 7; i++) {
+                for (int j = 0; j < 7; j++) {
+                    map[j][0] = "☠\t";
+                    map[j][6] = "☠\t";
+                    map[0][i] = "☠\t";
+                    map[6][i] = "☠\t";
+                }
+            }
+        } else if (choice == 3) {       //Karta med 8x8 rum
+            String[][] bigMap = new String[10][10];
+            System.out.println("This is the Big Map;");
+            map = bigMap;
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    map[i][j] = "[ ]\t";
+                }
+            }
+            for (int i = 0; i < 10; i++) {
+                for (int j = 0; j < 10; j++) {
+                    map[j][0] = "☠\t";
+                    map[j][9] = "☠\t";
+                    map[0][i] = "☠\t";
+                    map[9][i] = "☠\t";
+                }
+            }
+        } else {
+            System.out.println("No valid Map-choice");
+        }
+        displayMap(map);
+        enterMap(map);
+        return map;
+    }
+
+    //Metod för att enbart skriva ut kartan
+    public static void displayMap(String[][] map){
+        for (int row = 0; row < map.length; row++) {
+            for (int column = 0; column < map[row].length; column++) {
+                System.out.print(map[row][column] + "");
+            }
+            System.out.println();
+        }
+    }
+
+    // Start
+    public static String[][] enterMap(String[][] map){
+        int choice = menu2Map();
+        if (choice == 1) {
+            //Startar äventyret från övre vänstra rummet | Testar även programmet som ett litert äventyr
+            map [1][1] = " ⚜️\t";
+        } else if (choice == 2) {
+            //Startar äventyret från övre högra rummet
+            map [1][map.length-2] = " ⚜️\t";
+        } else if (choice == 3) {
+            //Startar äventyret från nedre vänstra rummet
+            map [map.length-2][1] = " ⚜️\t";
+        } else if (choice == 4) {
+            //Startar äventyret från nedre högra rummet
+            map [map.length-2][map.length-2] = " ⚜️\t";
+        } else {
+            System.out.println("No valid Entry");
+        }
+        displayMap(map);
+        return map;
+    }
+
+    //Old mapcode
+    /*public static int[][] createMap(int choice) {
         //Creating the map as an multi-dimensional array
         int[][] map = {{}};
         if (choice == 1) {
@@ -34,74 +130,7 @@ public class MapArray {
             System.out.println("No valid Map-choice");
         }
         return map;
-    }
-
-    //Metod för att enbart skriva ut kartan
-    public static void displayMap(int x[][]) {
-        for(int row=0;row<x.length;row++){
-            for (int column=0;column<x[row].length;column++){
-                System.out.print(x[row][column] + "\t");
-            }
-            System.out.println();
-        }
-    }
-
-    public static int[][] enter(int choice2){
-        int[][] mapPosition = {{}};
-        if (choice2 == 1) {
-            //Startar äventyret från övre vänstra rummet | Testar även programmet som ett litert äventyr
-            mapPosition = new int[][]{{1},{1}};
-            System.out.println("Displays map position: top left room = " + mapPosition[0][0]);
-        } else if (choice2 == 2) {
-            //Startar äventyret från övre högra rummet
-            mapPosition = new int[][]{{1},{4}};
-            System.out.println("Displays top right room" + mapPosition[0][0]);
-        } else if (choice2 == 3) {
-            //Startar äventyret från nedre vänstra rummet
-            mapPosition = new int[][]{{4},{1}};
-            System.out.println("Displays bottom left room" + mapPosition[0][0]);
-        } else if (choice2 == 4) {
-            //Startar äventyret från nedre högra rummet
-            mapPosition = new int[][]{{4},{4}};
-            System.out.println("Displays bottom right room" + mapPosition[0][0]);
-        } else {
-            System.out.println("No valid Entery");
-        }
-        return mapPosition;
-    }
-        /*
-        switch (choice2) {
-
-            case 1:
-                //Startar äventyret från övre vänstra rummet
-                System.out.println("Displays top left room");
-                int mapPosition;
-                break;
-
-            case 2:
-                //Startar äventyret från övre högra rummet
-                System.out.println("Displays top right room");
-                break;
-
-            case 3:
-                //Startar äventyret från nedre vänstra rummet
-                System.out.println("Displays bottom left room");
-                break;
-
-            case 4:
-                //Startar äventyret från nedre högra rummet
-                System.out.println("Displays bottom right room");
-                break;
-
-            case 0:
-                //loop = false;
-                System.out.println("- QUIT -");
-                break;
-
-            default:
-                System.out.println("Assertion Error!");
-
-        }*/
+    }*/
 
     public static int menuMap(){
         System.out.println("\nChoose the size of your map:");
@@ -111,12 +140,11 @@ public class MapArray {
         System.out.println("[0] Exit");
         System.out.println("\nChoose: ");
         int choice = DungeonRunMain.intInputMethod();
-
         return choice;
     }
 
     public static int menu2Map(){
-        System.out.println("\nSelect your position by typing in one of the following rooms: ");
+        System.out.println("\nSelect your starting position by typing in one of the following rooms: ");
         System.out.println("[1] Top Left Room");
         System.out.println("[2] Top Right Room");
         System.out.println("[3] Bottom Left Room");
@@ -124,13 +152,7 @@ public class MapArray {
         System.out.println("[0] Exit");
         System.out.println("\nChoose: ");
         //Denna metod kallas på i Mainmetoden för att bruka Scanner.
-        int choice2 = DungeonRunMain.intInputMethod();
-
-        return choice2;
+        int choice = DungeonRunMain.intInputMethod();
+        return choice;
     }
-
-
-    //        4. Spelaren väljer åt vilket håll hen vill gå för att komma till ett nytt rum
-    //        Skapa en klass som kan navigera mellan rummen
-
 }
