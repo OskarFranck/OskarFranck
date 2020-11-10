@@ -1,3 +1,5 @@
+import java.util.Random;
+
 /*        Kartor
         Kartorna är uppbyggda som matriser med koordinater, ungefär som ett schackbräde. I
         programmering kallas detta för ”multi-dimensional arrays”, läs mer här:
@@ -17,6 +19,7 @@ public class MapArray {
     //Valen för detta hittas i metoden Menu
     public static String[][] createMap(int choice) {
         String[][] map = new String[0][0];
+        Random exitGenerator = new Random();
         if (choice == 1) {              //Karta med 4x4 rum (Yttre arrays bildar väggar)
             String[][] smallMap = new String[6][6];
             System.out.println("This is the Small Map;");
@@ -24,55 +27,65 @@ public class MapArray {
             //Bygga upp rummen
             for (int i = 0; i < 6; i++) {
                 for (int j = 0; j < 6; j++) {
-                    map[i][j] = "[ ]\t";
+                    map[i][j] = " ☐\t";
                 }
             }
             //Placera ut väggarna
             for (int i = 0; i < 6; i++) {
                 for (int j = 0; j < 6; j++) {
-                    map[j][0] = "☠\t";
-                    map[j][5] = "☠\t";
-                    map[0][i] = "☠\t";
-                    map[5][i] = "☠\t";
+                    map[j][0] = " ☠\t";
+                    map[j][5] = " ☠\t";
+                    map[0][i] = " ☠\t";
+                    map[5][i] = " ☠\t";
                 }
             }
+            //Placera en utgång
+            int randomInt = exitGenerator.nextInt(map.length);
+            map[randomInt][randomInt] = " ♨\t";
         } else if (choice == 2) {       //Karta med 5x5 rum
             String[][] mediumMap = new String[7][7];
             System.out.println("This is the Medium Map;");
             map = mediumMap;
             for (int i = 0; i < 7; i++) {
                 for (int j = 0; j < 7; j++) {
-                    map[i][j] = "[ ]\t";
+                    map[i][j] = " ☐\t";
                 }
             }
             for (int i = 0; i < 7; i++) {
                 for (int j = 0; j < 7; j++) {
-                    map[j][0] = "☠\t";
-                    map[j][6] = "☠\t";
-                    map[0][i] = "☠\t";
-                    map[6][i] = "☠\t";
+                    map[j][0] = " ☠\t";
+                    map[j][6] = " ☠\t";
+                    map[0][i] = " ☠\t";
+                    map[6][i] = " ☠\t";
                 }
             }
+            int randomInt = exitGenerator.nextInt(map.length);
+            map[randomInt][randomInt] = " ♨\t";
         } else if (choice == 3) {       //Karta med 8x8 rum
             String[][] bigMap = new String[10][10];
             System.out.println("This is the Big Map;");
             map = bigMap;
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
-                    map[i][j] = "[ ]\t";
+                    map[i][j] = " ☐\t";
                 }
             }
             for (int i = 0; i < 10; i++) {
                 for (int j = 0; j < 10; j++) {
-                    map[j][0] = "☠\t";
-                    map[j][9] = "☠\t";
-                    map[0][i] = "☠\t";
-                    map[9][i] = "☠\t";
+                    map[j][0] = " ☠\t";
+                    map[j][9] = " ☠\t";
+                    map[0][i] = " ☠\t";
+                    map[9][i] = " ☠\t";
                 }
             }
+            int randomInt = exitGenerator.nextInt(map.length);
+            map[randomInt][randomInt] = " ♨\t";
         } else {
             System.out.println("No valid Map-choice");
         }
+
+
+
         displayMap(map);
         enterMap(map);
         return map;

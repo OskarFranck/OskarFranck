@@ -2,6 +2,8 @@ import java.util.Random;
 
 public class Treasuregenerator {
 
+    static int treasureCollected = 0;
+
     public static int treasureGenerator() {
 
         Random numberOfTreasures = new Random();
@@ -9,8 +11,6 @@ public class Treasuregenerator {
         int upperbound2 = 99;
 
         int randomInt = numberOfTreasures.nextInt(upperbound);
-
-        int treasureCollected = 0;
 
         int coin = 2;
         int purse = 6;
