@@ -1,16 +1,19 @@
 public class Monster {
 
+
     private double initiative;
     private double durability;
     private double attack;
     private double agility;
     private double rarity;
 
-    public Monster () {
+    Monster giantSpider = new Monster (7, 1, 2, 3, 0.20);
+    Monster skeleton = new Monster (4, 2, 3, 3, 0.15);
+    Monster orc = new Monster (6, 3, 4, 4, 0.10);
+    Monster troll = new Monster (2, 4, 7, 2, 0.05);
 
-    }
 
-    public Monster(double initiative, double durability, double attack, double agility, double rarity) {
+    public Monster(double initiative, double durability, double attack, double agility, double rarity) { //constructor
         this.initiative = initiative;
         this.durability = durability;
         this.attack = attack;
