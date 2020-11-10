@@ -2,39 +2,52 @@ public class Navigate {
 
     public static String[][] move (String[][] map){
         int choice = menuNav();
+        int treasureCollected;
         //Read more: https://javarevisited.blogspot.com/2015/09/how-to-loop-two-dimensional-array-in-java.html#ixzz6dIlWV2uu
         for (int row = 0; row < map.length; row++) {
             for (int col = 0; col < map[row].length; col++){
                 if (" ⚜️\t".equals(map[row][col])) {
                     if (choice == 1) {                  // ◄ - Go Left
-                        if (map[row][col - 1].equals("☠\t")){
+                        if (map[row][col - 1].equals(" ☠\t")){
                             System.out.println("⌧ You can't walk here! ☞ ☠");
+                        } else if (map[row][col - 1].equals(" ♨\t")){
+                            System.out.println("Would you like to escape the dungeon? ☞ ♨");
                         } else {
-                            map[row][col] = "[ ]\t";
+                            map[row][col] = " ☑\t";
                             map[row][col - 1] = " ⚜️\t";
+                            Treasuregenerator.treasureGenerator();
                         }
                     } else if (choice == 2) {           // △ - Go Up
-                        if (map[row - 1][col].equals("☠\t")){
+                        if (map[row - 1][col].equals(" ☠\t")){
                             System.out.println("⌧ You can't walk here! ☞ ☠");
+                        } else if (map[row - 1][col].equals(" ♨\t")){
+                            System.out.println("Would you like to escape the dungeon? ☞ ♨");
                         } else {
-                            map[row][col] = "[ ]\t";
+                            map[row][col] = " ☑\t";
                             map[row - 1][col] = " ⚜️\t";
+                            Treasuregenerator.treasureGenerator();
                         }
                     } else if (choice == 3) {           // ► - Go Right
-                        if (map[row][col + 1].equals("☠\t")){
+                        if (map[row][col + 1].equals(" ☠\t")){
                             System.out.println("⌧ You can't walk here! ☞ ☠");
-                        } else {
-                            map[row][col] = "[ ]\t";
+                        } else if (map[row][col + 1].equals(" ♨\t")){
+                            System.out.println("Would you like to escape the dungeon? ☞ ♨");
+                        }  else {
+                            map[row][col] = " ☑\t";
                             col++;
                             map[row][col] = " ⚜️\t";
+                            Treasuregenerator.treasureGenerator();
                         }
                     } else if (choice == 4) {           // ▽ - Go Down
-                        if (map[row + 1][col].equals("☠\t")){
+                        if (map[row + 1][col].equals(" ☠\t")){
                             System.out.println("⌧ You can't walk here! ☞ ☠");
+                        } else if (map[row + 1][col].equals(" ♨\t")){
+                            System.out.println("Would you like to escape the dungeon? ☞ ♨");
                         } else {
-                            map[row][col] = "[ ]\t";
+                            map[row][col] = " ☑\t";
                             row++;
                             map[row][col] = " ⚜️\t";
+                            Treasuregenerator.treasureGenerator();
                         }
                     } else if (choice == 0) {
                         DungeonRunMain.exit();
