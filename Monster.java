@@ -2,7 +2,7 @@ public class Monster {
 
 
     private double initiative;
-    private double durability;
+    private double health;
     private double attack;
     private double agility;
     private double rarity;
@@ -12,10 +12,10 @@ public class Monster {
     Monster orc = new Monster (6, 3, 4, 4, 0.10);
     Monster troll = new Monster (2, 4, 7, 2, 0.05);
 
+    public Monster(double initiative, double health, double attack, double agility, double rarity) { //constructor
 
-    public Monster(double initiative, double durability, double attack, double agility, double rarity) { //constructor
         this.initiative = initiative;
-        this.durability = durability;
+        this.health = health;
         this.attack = attack;
         this.agility = agility;
         this.rarity = rarity;
@@ -31,11 +31,11 @@ public class Monster {
     }
 
     public double getDurability() {
-        return durability;
+        return health;
     }
 
-    public void setDurability(double durability) {
-        this.durability = durability;
+    public void setDurability(double health) {
+        this.health = health;
     }
 
     public double getAttack() {
