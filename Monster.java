@@ -1,16 +1,16 @@
 public class Monster {
 
-    private double initiative;
-    private double health;
-    private double attack;
-    private double agility;
-    private double rarity;
+    private int initiative;
+    private int health;
+    private int attack;
+    private int agility;
+    private int rarity;
 
     public Monster () {
 
     }
 
-    public Monster(double initiative, double health, double attack, double agility, double rarity) {
+    public Monster(int initiative, int health, int attack, int agility, int rarity) {
         this.initiative = initiative;
         this.health = health;
         this.attack = attack;
@@ -19,43 +19,43 @@ public class Monster {
 
     }
 
-    public double getInitiative() {
+    public int getInitiative() {
         return initiative;
     }
 
-    public void setInitiative(double initiative) {
+    public void setInitiative(int initiative) {
         this.initiative = initiative;
     }
 
-    public double getDurability() {
+    public int getHealth() {
         return health;
     }
 
-    public void setDurability(double health) {
+    public void setHealth(int health) {
         this.health = health;
     }
 
-    public double getAttack() {
+    public int getAttack() {
         return attack;
     }
 
-    public void setAttack(double attack) {
+    public void setAttack(int attack) {
         this.attack = attack;
     }
 
-    public double getAgility() {
+    public int getAgility() {
         return agility;
     }
 
-    public void setAgility(double agility) {
+    public void setAgility(int agility) {
         this.agility = agility;
     }
 
-    public double getRarity() {
+    public int getRarity() {
         return rarity;
     }
 
-    public void setRarity(double rarity) {
+    public void setRarity(int rarity) {
         this.rarity = rarity;
     }
 }

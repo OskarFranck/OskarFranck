@@ -23,14 +23,13 @@ public class DungeonRunMain {
                 Treasuregenerator.treasureGenerator();
                 break;
             case 2:
-
+                Treasuregenerator.treasureGenerator();
                 break;
 
             case 3:
                 int[][] map = MapArray.createMap(MapArray.menu());
                 MapArray.displayMap(map);
                 int[][] mapPosition = MapArray.enter(MapArray.menu2());
-
                 break;
             case 0:
 

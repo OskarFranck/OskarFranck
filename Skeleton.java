@@ -1,10 +1,10 @@
-public abstract class Skeleton extends Monster{
+public class Skeleton extends Monster{
 
     public Skeleton() {
 
     }
 
-    public Skeleton(double initiative, double health, double attack, double agility, double rarity) {
+    public Skeleton(int initiative, int health, int attack, int agility, int rarity) {
         super(initiative, health, attack, agility, rarity);
     }
 }

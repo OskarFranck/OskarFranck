@@ -1,4 +1,9 @@
-public abstract class Knight extends Character {
+public class Knight extends Character {
+
+    @Override
+    public void specialAbility() {
+
+    }
 
     public Knight() {
 
