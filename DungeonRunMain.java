@@ -1,9 +1,11 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class DungeonRunMain {
 
     public static void main(String[] args) {
+        ArrayList<Monster> monsterList = new ArrayList<>();
         boolean mainLoopIsRunning = true;
         int mainMenuChoice;
         welcome();
