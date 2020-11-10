@@ -15,7 +15,7 @@ public class Navigate {
                         } else {
                             map[row][col] = " ☑\t";
                             map[row][col - 1] = " ⚜️\t";
-                            Treasuregenerator.treasureGenerator();
+                            Room.enterRoom();
                         }
                     } else if (choice == 2) {           // △ - Go Up
                         if (map[row - 1][col].equals(" ☠\t")){
@@ -25,7 +25,7 @@ public class Navigate {
                         } else {
                             map[row][col] = " ☑\t";
                             map[row - 1][col] = " ⚜️\t";
-                            Treasuregenerator.treasureGenerator();
+                            Room.enterRoom();
                         }
                     } else if (choice == 3) {           // ► - Go Right
                         if (map[row][col + 1].equals(" ☠\t")){
@@ -36,7 +36,7 @@ public class Navigate {
                             map[row][col] = " ☑\t";
                             col++;
                             map[row][col] = " ⚜️\t";
-                            Treasuregenerator.treasureGenerator();
+                            Room.enterRoom();
                         }
                     } else if (choice == 4) {           // ▽ - Go Down
                         if (map[row + 1][col].equals(" ☠\t")){
@@ -47,7 +47,7 @@ public class Navigate {
                             map[row][col] = " ☑\t";
                             row++;
                             map[row][col] = " ⚜️\t";
-                            Treasuregenerator.treasureGenerator();
+                            Room.enterRoom();
                         }
                     } else if (choice == 0) {
                         DungeonRunMain.exit();
