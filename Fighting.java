@@ -2,13 +2,17 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Fighting {
+
     static Character newPlayer = new Knight(5, 9,6,10);  //skapar en charactar med namn knight
-    static Monster newMonster = new Skeleton(4, 2, 3, 3, 1); //skapar ett monster med namn skeleton
+    static Monster giantSpider = new Giantspider (7, 1, 2, 3, 0.20);
+    static Monster skeleton = new Skeleton (4, 2, 3, 3, 0.15);
+    static Monster orc = new Orc (6, 3, 4, 4, 0.10);
+    static Monster troll = new Troll (2, 4, 7, 2, 0.05);
 
 
     public static void whoStartsFight() {
         int playerInitiative = rollDice(newPlayer.getInitiative());
-        double monsterInitiative = rollDiceDouble(newMonster.getInitiative());
+        double monsterInitiative = rollDiceDouble(skeleton.getInitiative());
 
         while (tryToFlee(newPlayer.getAgility()))
         if (playerInitiative > monsterInitiative) {
@@ -19,22 +23,22 @@ public class Fighting {
     }
     public static void playerAttack() {
         int playerAttack = rollDice(newPlayer.getAttack());
-        double monsterDefend = rollDiceDouble(newMonster.getAgility());
+        double monsterDefend = rollDiceDouble(skeleton.getAgility());
 
         if (playerAttack > monsterDefend) {
-            newMonster.setDurability(newMonster.getDurability() -1);
+            skeleton.setDurability(skeleton.getDurability() -1);
             System.out.println("The knight swings his sword and HITS!");
             System.out.println("Monster looses one HP");
-            System.out.println("HP left: " + newMonster.getDurability());
+            System.out.println("HP left: " + skeleton.getDurability());
         } else {
             System.out.println("The knight swings his sword and MISSES!");
             System.out.println("Monster Dodges");
-            System.out.println("HP left: " + newMonster.getDurability());
+            System.out.println("HP left: " + skeleton.getDurability());
         }
     }
 
     public static void monsterAttack() {
-        double monsterAttack = rollDiceDouble(newMonster.getAttack());
+        double monsterAttack = rollDiceDouble(skeleton.getAttack());
         int playerDefend = rollDice(newPlayer.getAgility());
 
         if (monsterAttack > playerDefend) {
@@ -50,14 +54,14 @@ public class Fighting {
         do {
             monsterAttack();
             playerAttack();
-        } while (newMonster.getDurability() > 0 && newPlayer.getHealth() > 0);
+        } while (skeleton.getDurability() > 0 && newPlayer.getHealth() > 0);
     }
 
     public static void fightingP() {
         do {
             playerAttack();
             monsterAttack();
-        } while (newPlayer.getHealth() > 0 && newMonster.getDurability() > 0);
+        } while (newPlayer.getHealth() > 0 && skeleton.getDurability() > 0);
     }
 
     public static boolean tryToFlee(int agility) {

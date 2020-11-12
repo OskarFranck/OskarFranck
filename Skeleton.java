@@ -4,7 +4,8 @@ public class Skeleton extends Monster{
 
     }
 
-    public Skeleton(int initiative, int health, int attack, int agility, int rarity) {
+    public Skeleton(double initiative, double health, double attack, double agility, double rarity) {
         super(initiative, health, attack, agility, rarity);
+
     }
 }
