@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class DungeonRunMain {
 
     static ArrayList<Characters> classCharacters = new ArrayList<>();
-    //static ArrayList<MonsterSubClass> monsterList = new ArrayList<>();
     static ArrayList<Classes> classesList = new ArrayList<>();
 
 
