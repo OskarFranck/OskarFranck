@@ -25,8 +25,6 @@ public class Generatemonster {
                 generateOrc();
             } else if (randNumber < 50) {
                 generateTroll();
-            } else {
-                System.out.println("Room is empty");
             }
             loopTime++;
         }
