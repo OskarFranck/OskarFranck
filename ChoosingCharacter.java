@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
-public class ChoosingCharacter extends DungeonRunMain {
+public class ChoosingCharacter extends DungeonRunMain{
 
 
 
@@ -53,11 +53,10 @@ public class ChoosingCharacter extends DungeonRunMain {
     }
 
     public static void loadCharacter(){
-        Characters classCharacters;
         try {
             FileInputStream fileIn = new FileInputStream("SavedCharacters.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            classCharacters = (Characters)in.readObject();
+            DungeonRunMain.classCharacters = (ArrayList)in.readObject();
             in.close();
             fileIn.close();
         } catch (IOException var3) {
@@ -66,16 +65,21 @@ public class ChoosingCharacter extends DungeonRunMain {
             System.out.println("Employee class not found");
             var4.printStackTrace();
         }
-/*
-        for (int i = 0; i < 1; i++) {
 
-        System.out.println("Deserialized Employee...");
-        System.out.println("Name: " + classCharacters.);
-        System.out.println("Address: " + classCharacters.address);
-        System.out.println("SSN: " + classCharacters.SSN);
-        System.out.println("Number: " + classCharacters.number);
+        for (int i = 0; i < DungeonRunMain.classCharacters.size(); i++) {
+
+            System.out.println("Name: " + DungeonRunMain.classCharacters.get(i).getName());
+            System.out.println("Total treasure: " + DungeonRunMain.classCharacters.get(i).getTotalTreasure());
+            if ((DungeonRunMain.classCharacters.get(i).getClassChoice()) == 1) {
+                System.out.println("Klass: Trollkar");
+            }
+
+            System.out.println("Class: " + DungeonRunMain.classCharacters.get(i).getClass());
+
+            System.out.println("Monsters slain: " + DungeonRunMain.classCharacters.get(i).getMonstersSlain());
+            System.out.println("Total runs: " + DungeonRunMain.classCharacters.get(i).getTotalRuns());
         }
 
- */
+
     }
 }
