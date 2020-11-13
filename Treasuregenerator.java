@@ -25,23 +25,23 @@ public class Treasuregenerator {
             if(randomInt2 <= 39) {
                 System.out.println("Generated number = " + randomInt2);
                 treasureCollected += coin;
-                System.out.println("You found some coins");
+                System.out.println("You found some coins valued: " + coin);
             } else if (randomInt2 <= 59) {
                 System.out.println("Generated number = " + randomInt2);
                 treasureCollected += purse;
-                System.out.println("You found a purse");
+                System.out.println("You found a purse valued: " + purse);
             } else if (randomInt2 <= 74) {
                 System.out.println("Generated number = " + randomInt2);
                 treasureCollected += jewelry;
-                System.out.println("You found some jewelry");
+                System.out.println("You found some jewelry valued: " + jewelry);
             } else if (randomInt2 <= 84) {
                 System.out.println("Generated number = " + randomInt2);
                 treasureCollected += gemstone;
-                System.out.println("You found a gemstone");
+                System.out.println("You found a gemstone valued: " + gemstone);
             } else if (randomInt2 <= 89) {
                 System.out.println("Generated number = " + randomInt2);
                 treasureCollected += treasure;
-                System.out.println("You found a small treasurechest");
+                System.out.println("You found a small treasure chest valued: " + treasure);
             } else {
                 System.out.println("random = " + randomInt2);
                 System.out.println("You found JACKSHIT!");
@@ -49,7 +49,6 @@ public class Treasuregenerator {
         }
 
         System.out.println("Score of treasures: " + treasureCollected);
-
         return treasureCollected;
     }
 }

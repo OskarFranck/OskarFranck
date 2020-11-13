@@ -36,6 +36,9 @@ public class DungeonRunMain {
                 //MapArray.displayMap(map);
                 //String[][] mapPosition = MapArray.enter(MapArray.menu2Map());
                 break;
+            case 4:
+                music();
+                break;
             case 0:
                 exit();
                 break;
@@ -53,11 +56,18 @@ public class DungeonRunMain {
         System.out.println("\t\t\t\t༄  Version (1.0004)  ❦\n");
     }
 
+    public static void music(){
+        String filePath = "TheAdventureBegins.wav";
+        Sound music = new Sound();
+        Sound.setMusic(filePath);
+    }
+
     public static int mainMenuPrint(){
         System.out.println("\n\tWelcome to Dungeon Run");
         System.out.println("\n\t[1] Create new character");
         System.out.println("\n\t[2] Load an existing character");
         System.out.println("\n\t[3] Create a new map");
+        System.out.println("\n\t[4] Play/Mute the music");
         System.out.println("\n\t[0] Exit program");
         System.out.print("\tAccess menu: ");
         int mainMenuChoice = intInputMethod();

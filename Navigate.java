@@ -76,6 +76,10 @@ public class Navigate {
             System.out.println("[0] Escape the dungeon!");
             System.out.println("\nChoose: ");
             choice = DungeonRunMain.intInputMethod(); //Denna metod kallas på i Mainmetoden för att bruka Scanner.
+
+            String filePath = "move.wav";   //kod som kallar på navigeringsljud
+            Sound soundNav = new Sound();
+            Sound.setFx(filePath);
         } while (choice < 0 || choice > 4);
         return choice;
     }
