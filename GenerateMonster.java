@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Random;
 
-public class Generatemonster {
+public class GenerateMonster {
 
     static ArrayList<Monster> monster = new ArrayList<>();
     static Monster giantSpider = new Giantspider (7, 1, 2, 3, 0.20);

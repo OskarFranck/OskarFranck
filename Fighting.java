@@ -21,6 +21,7 @@ public class Fighting {
             fightingM();
         }
     }
+
     public static void playerAttack() {
         int playerAttack = rollDice(newPlayer.getAttack());
         double monsterDefend = rollDiceDouble(skeleton.getAgility());
