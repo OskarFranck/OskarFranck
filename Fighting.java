@@ -3,15 +3,18 @@ import java.util.Scanner;
 
 public class Fighting {
 
+    /*
     static Character newPlayer = new Knight(5, 9,6,10);  //skapar en charactar med namn knight
     static Monster giantSpider = new Giantspider (7, 1, 2, 3, 0.20);
     static Monster skeleton = new Skeleton (4, 2, 3, 3, 0.15);
     static Monster orc = new Orc (6, 3, 4, 4, 0.10);
     static Monster troll = new Troll (2, 4, 7, 2, 0.05);
 
+     */
+
 
     public static void whoStartsFight() {
-        int playerInitiative = rollDice(newPlayer.getInitiative());
+        double playerInitiative = rollDice(DungeonRunMain.knight.getInitiative());
         double monsterInitiative = rollDiceDouble(skeleton.getInitiative());
 
         while (tryToFlee(newPlayer.getAgility()))
