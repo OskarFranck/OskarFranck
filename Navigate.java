@@ -56,7 +56,7 @@ public class Navigate {
             }
         }
         MapArray.displayMap(map);
-        move(map);//Tillfällig loop som navigerar om och om igen
+        move(map);//Tillfällig loop som navigerar om och om igen. Här kan vi placera if-loop som kollar livet för karraktären.
         return map;
     }
 

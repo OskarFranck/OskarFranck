@@ -40,8 +40,10 @@ public class MapArray {
                 }
             }
             //Placera en utgång
-            int randomInt = exitGenerator.nextInt(map.length);
-            map[randomInt][randomInt] = " ♨\t";
+            int full = map.length - 2;
+            int randomIntX = 1 + exitGenerator.nextInt(full);
+            int randomIntY = 1 + exitGenerator.nextInt(full);
+            map[randomIntX][randomIntY] = " ♨\t";
         } else if (choice == 2) {       //Karta med 5x5 rum
             String[][] mediumMap = new String[7][7];
             System.out.println("This is the Medium Map;");
@@ -59,8 +61,10 @@ public class MapArray {
                     map[6][i] = " ☠\t";
                 }
             }
-            int randomInt = exitGenerator.nextInt(map.length);
-            map[randomInt][randomInt] = " ♨\t";
+            int full = map.length - 2;
+            int randomIntX = 1 + exitGenerator.nextInt(full);
+            int randomIntY = 1 + exitGenerator.nextInt(full);
+            map[randomIntX][randomIntY] = " ♨\t";
         } else if (choice == 3) {       //Karta med 8x8 rum
             String[][] bigMap = new String[10][10];
             System.out.println("This is the Big Map;");
@@ -78,14 +82,13 @@ public class MapArray {
                     map[9][i] = " ☠\t";
                 }
             }
-            int randomInt = exitGenerator.nextInt(map.length);
-            map[randomInt][randomInt] = " ♨\t";
+            int full = map.length - 2;
+            int randomIntX = 1 + exitGenerator.nextInt(full);
+            int randomIntY = 1 + exitGenerator.nextInt(full);
+            map[randomIntX][randomIntY] = " ♨\t";
         } else {
             System.out.println("No valid Map-choice");
         }
-
-
-
         displayMap(map);
         enterMap(map);
         return map;
