@@ -2,7 +2,6 @@ public class Navigate {
 
     public static String[][] move (String[][] map){
         int choice = menuNav();
-        int treasureCollected;
         //Read more: https://javarevisited.blogspot.com/2015/09/how-to-loop-two-dimensional-array-in-java.html#ixzz6dIlWV2uu
         for (int row = 0; row < map.length; row++) {
             for (int col = 0; col < map[row].length; col++){
@@ -56,7 +55,7 @@ public class Navigate {
             }
         }
         MapArray.displayMap(map);
-        move(map);//Tillfällig loop som navigerar om och om igen
+        move(map);//Tillfällig loop som navigerar om och om igen. Här kan vi placera if-loop som kollar livet för karraktären.
         return map;
     }
 
