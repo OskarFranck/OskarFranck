@@ -104,7 +104,7 @@ public class MapArray {
         }
     }
 
-    // Start
+    // Placera karaktären på mappen
     public static String[][] enterMap(String[][] map){
         int choice = menu2Map();
         if (choice == 1) {
