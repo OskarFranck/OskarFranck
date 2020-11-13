@@ -9,12 +9,23 @@ public class Fighting {
     static Monster skeleton = new Skeleton (4, 2, 3, 3, 0.15);
     static Monster orc = new Orc (6, 3, 4, 4, 0.10);
     static Monster troll = new Troll (2, 4, 7, 2, 0.05);
-
      */
+
+    public static void getPlayer() {
+        for (Classes character : DungeonRunMain.classesList) {
+            if ( . ) {
+                double agility = character.getAgility();
+            }
+        }
+    }
+
+    public static void getMonster() {
+
+    }
 
 
     public static void whoStartsFight() {
-        double playerInitiative = rollDice(DungeonRunMain.knight.getInitiative());
+        double playerInitiative = rollDice(.getInitiative());
         double monsterInitiative = rollDiceDouble(skeleton.getInitiative());
 
         while (tryToFlee(newPlayer.getAgility()))

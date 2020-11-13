@@ -1,6 +1,7 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.*;
-public class ChoosingCharacter extends DungeonRunMain{
+public class ChoosingCharacter extends DungeonRunMain {
 
 
 
@@ -25,22 +26,23 @@ public class ChoosingCharacter extends DungeonRunMain{
                 characterClassLoop=false;
             }
             System.out.println("Skriv in karaktärens namn: ");
-            name = sc.nextLine();
+            name = sc.next();
         }
         Characters freshCharacter = new SavedCharacters(name, 0, characterClass, 0, 0);
-        try {
-            FileOutputStream fileOut =
-                    new FileOutputStream("B:/Dokument/Downloads/[standard] Skolarbeten/Högskola/Java Utvecklare/Java A projects//Dungeon-Run/SparadeKaraktärer.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(freshCharacter);
-            out.close();
-            fileOut.close();
-            System.out.printf("Serialized data is saved in B:/Dokument/Downloads/[standard] Skolarbeten/Högskola/Java Utvecklare/Java A projects//Dungeon-Run/SparadeKaraktärer.ser");
-        } catch (IOException i) {
-            i.printStackTrace();
-        }
         classCharacters.add(freshCharacter);
         printSavedCharacter();
+
+        try {
+            FileOutputStream fileOut = new FileOutputStream("SavedCharacters.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(classCharacters);
+            out.close();
+            fileOut.close();
+            System.out.printf("Serialized data is saved in SavedCharacters.ser");
+        } catch (IOException var7) {
+            var7.printStackTrace();
+        }
+
 
 
     }
@@ -49,31 +51,31 @@ public class ChoosingCharacter extends DungeonRunMain{
             System.out.println(savedGuy.toString());
         }
     }
-    /*
-    public static void loadCharacter(){
 
-        Employee e = null;
+    public static void loadCharacter(){
+        Characters classCharacters;
         try {
-            FileInputStream fileIn = new FileInputStream("/tmp/employee.ser");
+            FileInputStream fileIn = new FileInputStream("SavedCharacters.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            e = (Employee) in.readObject();
+            classCharacters = (Characters)in.readObject();
             in.close();
             fileIn.close();
-        } catch (IOException i) {
-            i.printStackTrace();
-            return;
-        } catch (ClassNotFoundException c) {
+        } catch (IOException var3) {
+            var3.printStackTrace();
+        } catch (ClassNotFoundException var4) {
             System.out.println("Employee class not found");
-            c.printStackTrace();
-            return;
+            var4.printStackTrace();
         }
+/*
+        for (int i = 0; i < 1; i++) {
 
         System.out.println("Deserialized Employee...");
-        System.out.println("Name: " + e.name);
-        System.out.println("Address: " + e.address);
-        System.out.println("SSN: " + e.SSN);
-        System.out.println("Number: " + e.number);
-    }
+        System.out.println("Name: " + classCharacters.);
+        System.out.println("Address: " + classCharacters.address);
+        System.out.println("SSN: " + classCharacters.SSN);
+        System.out.println("Number: " + classCharacters.number);
+        }
 
-     */
+ */
+    }
 }
