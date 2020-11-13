@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Generatemonster {
 
@@ -9,7 +10,26 @@ public class Generatemonster {
     static Monster troll = new Troll (2, 4, 7, 2, 0.05);
 
     public static void randomMonster() {
+        Random rand = new Random();
 
+        int loopTime = rand.nextInt(3) +1;
+
+        while (loopTime < 4) {
+            int randNumber = rand.nextInt(99) +1;
+
+            if (randNumber < 20) {
+                generateGiantSpider();
+            } else if (randNumber < 35) {
+                generateSkeleton();
+            } else if (randNumber < 45) {
+                generateOrc();
+            } else if (randNumber < 50) {
+                generateTroll();
+            } else {
+                System.out.println("Room is empty");
+            }
+            loopTime++;
+        }
     }
 
     public static void generateTroll() {
