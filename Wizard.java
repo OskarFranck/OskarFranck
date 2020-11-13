@@ -1,15 +1,5 @@
-public class Wizard extends Character{
-
-    @Override
-    public void specialAbility() {
-
-    }
-
-    public Wizard() {
-
-    }
-
-    public Wizard (int initiative, int health, int attack, int agility) {
-        super(initiative, health, attack, agility);
+public class Wizard extends Classes{
+    public Wizard(double initiative, double health, double attack, double agility) {
+        super(initiative, health,attack, agility);
     }
 }

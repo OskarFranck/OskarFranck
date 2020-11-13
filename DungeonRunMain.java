@@ -2,10 +2,25 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+
 public class DungeonRunMain {
 
+    static ArrayList<Characters> classCharacters = new ArrayList<>();
+    static ArrayList<Classes> classesList = new ArrayList<>();
+
+
+
     public static void main(String[] args) {
-        ArrayList<Monster> monsterList = new ArrayList<>();
+
+        Classes knight = new Knight (5, 9, 6, 4);
+        Classes wizard = new Wizard (6, 4, 9, 5);
+        Classes thief = new Thief (7, 5, 5, 7);
+        classesList.add(knight);
+        classesList.add(wizard);
+        classesList.add(thief);
+
+
+
         boolean mainLoopIsRunning = true;
         int mainMenuChoice;
         welcome();
@@ -24,9 +39,11 @@ public class DungeonRunMain {
         switch (mainMenuChoice){
             case 1:
                 System.out.println("Creating new character");
+                ChoosingCharacter.createCharacter();
                 break;
             case 2:
                 System.out.println("Loading character");
+                //ChoosingCharacter.loadCharacter();
                 break;
 
             case 3:
@@ -78,5 +95,4 @@ public class DungeonRunMain {
     public static void exit() {
         System.out.println("Exiting the dungeon.");
     }
-
 }
