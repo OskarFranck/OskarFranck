@@ -1,23 +1,19 @@
-public class Monster extends DungeonRunMain{
-
+public class Classes extends ChoosingCharacter{
 
     private double initiative;
     private double health;
     private double attack;
     private double agility;
-    private double rarity;
 
 
 
 
-
-    public Monster(double initiative, double health, double attack, double agility, double rarity) { //constructor
+    public Classes(double initiative, double health, double attack, double agility) { //constructor
 
         this.initiative = initiative;
         this.health = health;
         this.attack = attack;
         this.agility = agility;
-        this.rarity = rarity;
 
     }
 
@@ -29,11 +25,11 @@ public class Monster extends DungeonRunMain{
         this.initiative = initiative;
     }
 
-    public double getDurability() {
+    public double getHealth() {
         return health;
     }
 
-    public void setDurability(double health) {
+    public void setHealth(double health) {
         this.health = health;
     }
 
@@ -52,14 +48,4 @@ public class Monster extends DungeonRunMain{
     public void setAgility(double agility) {
         this.agility = agility;
     }
-
-    public double getRarity() {
-        return rarity;
-    }
-
-    public void setRarity(double rarity) {
-        this.rarity = rarity;
-    }
 }
-
-
