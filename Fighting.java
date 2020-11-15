@@ -1,21 +1,35 @@
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Fighting {
 
-    /*
-    static Character newPlayer = new Knight(5, 9,6,10);  //skapar en charactar med namn knight
+
     static Monster giantSpider = new Giantspider (7, 1, 2, 3, 0.20);
     static Monster skeleton = new Skeleton (4, 2, 3, 3, 0.15);
     static Monster orc = new Orc (6, 3, 4, 4, 0.10);
     static Monster troll = new Troll (2, 4, 7, 2, 0.05);
+
+    /*
+    1. riddare
+    2. trollkarl
+    3. tjuv
      */
 
-    public static void getPlayer() {
-        for (Classes character : DungeonRunMain.classesList) {
-            if ( . ) {
-                double agility = character.getAgility();
+
+    public static void getPlayer(String name) {
+        for (int i = 0; i < DungeonRunMain.classCharacters.size(); i++) {
+            if (DungeonRunMain.classCharacters.get(i).getName().equalsIgnoreCase(name)) {
+                int classChoice = DungeonRunMain.classCharacters.get(i).getClassChoice();
+                if (classChoice == 1) {
+                    
+                }
             }
+
+
+        }
+        for (Classes character : DungeonRunMain.classesList) {
+            
         }
     }
 
@@ -26,7 +40,7 @@ public class Fighting {
 
     public static void whoStartsFight() {
         double playerInitiative = rollDice(.getInitiative());
-        double monsterInitiative = rollDiceDouble(skeleton.getInitiative());
+        double monsterInitiative = rollDice(skeleton.getInitiative());
 
         while (tryToFlee(newPlayer.getAgility()))
         if (playerInitiative > monsterInitiative) {
@@ -37,7 +51,7 @@ public class Fighting {
     }
     public static void playerAttack() {
         int playerAttack = rollDice(newPlayer.getAttack());
-        double monsterDefend = rollDiceDouble(skeleton.getAgility());
+        double monsterDefend = rollDice(skeleton.getAgility());
 
         if (playerAttack > monsterDefend) {
             skeleton.setDurability(skeleton.getDurability() -1);
@@ -52,7 +66,7 @@ public class Fighting {
     }
 
     public static void monsterAttack() {
-        double monsterAttack = rollDiceDouble(skeleton.getAttack());
+        double monsterAttack = rollDice(skeleton.getAttack());
         int playerDefend = rollDice(newPlayer.getAgility());
 
         if (monsterAttack > playerDefend) {
@@ -104,6 +118,7 @@ public class Fighting {
     }
 
 
+    /*
     public static int rollDice(int numberOfDice) {
         int diceThrow;
         int diceTotalScore = 0;
@@ -120,7 +135,9 @@ public class Fighting {
         }
         return diceTotalScore;
     }
-    public static double rollDiceDouble(double numberOfDice) {
+
+     */
+    public static double rollDice(double numberOfDice) {
         double diceThrow;
         double diceTotalScore = 0;
         Random rand = new Random();
