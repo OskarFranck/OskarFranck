@@ -39,22 +39,20 @@ public class DungeonRunMain {
         Object chosenCharacterObject = new DungeonRunMain();
         switch (mainMenuChoice){
             case 1:
-                System.out.println("Creating new character");
+                //System.out.println("Creating new character");
                 ChoosingCharacter.createCharacter();
                 break;
             case 2:
-                System.out.println("Loading character");
+                //System.out.println("Loading character");
                 chosenCharacterObject = ChoosingCharacter.loadCharacter();
-                break;
 
-            case 3:
                 //String[][] map = MapArray.createMap(MapArray.menuMap());
                 String[][] map = MapArray.createMap(MapArray.menuMap());
                 Navigate.move(map);
                 //MapArray.displayMap(map);
                 //String[][] mapPosition = MapArray.enter(MapArray.menu2Map());
                 break;
-            case 4:
+            case 3:
                 music();
                 break;
             case 0:
@@ -81,13 +79,13 @@ public class DungeonRunMain {
     }
 
     public static int mainMenuPrint(){
-        System.out.println("\n\tWelcome to Dungeon Run");
-        System.out.println("\n\t[1] Create new character");
-        System.out.println("\n\t[2] Load an existing character");
-        System.out.println("\n\t[3] Create a new map");
-        System.out.println("\n\t[4] Play/Mute the music");
-        System.out.println("\n\t[0] Exit program");
-        System.out.print("\tAccess menu: ");
+        System.out.println("\n\tVälkommen till Dungeon Run!");
+        System.out.println("\n\t[1] Skapa en ny karaktär");
+        System.out.println("\n\t[2] Ladda en sparad karaktär");
+        //System.out.println("\n\t[3] Create a new map");
+        System.out.println("\n\t[3] Sätt på eller stäng av musiken");
+        System.out.println("\n\t[0] Avsluta program");
+        System.out.print("\tVal: ");
         int mainMenuChoice = intInputMethod();
         return mainMenuChoice;
     }
