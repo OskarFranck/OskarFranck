@@ -9,7 +9,7 @@ public class GenerateMonster {
     static Monster orc = new Orc (6, 3, 4, 4, 0.10);
     static Monster troll = new Troll (2, 4, 7, 2, 0.05);
 
-    public static void randomMonster() {
+    public static ArrayList<Monster> randomMonster() {
         Random rand = new Random();
 
         int loopTime = rand.nextInt(3) +1;
@@ -19,6 +19,7 @@ public class GenerateMonster {
 
             if (randNumber < 20) {
                 generateGiantSpider();
+
             } else if (randNumber < 35) {
                 generateSkeleton();
             } else if (randNumber < 45) {
@@ -28,6 +29,7 @@ public class GenerateMonster {
             }
             loopTime++;
         }
+        return monster;
     }
 
     public static void generateTroll() {
