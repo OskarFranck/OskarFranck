@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.io.*;
 public class ChoosingCharacter extends DungeonRunMain{
@@ -30,7 +31,6 @@ public class ChoosingCharacter extends DungeonRunMain{
         }
         Characters freshCharacter = new SavedCharacters(name, 0, characterClass, 0, 0);
         classCharacters.add(freshCharacter);
-        printSavedCharacter();
 
         try {
             FileOutputStream fileOut = new FileOutputStream("SavedCharacters.ser");
@@ -38,7 +38,6 @@ public class ChoosingCharacter extends DungeonRunMain{
             out.writeObject(classCharacters);
             out.close();
             fileOut.close();
-            System.out.printf("Serialized data is saved in SavedCharacters.ser");
         } catch (IOException var7) {
             var7.printStackTrace();
         }
@@ -46,13 +45,11 @@ public class ChoosingCharacter extends DungeonRunMain{
 
 
     }
-    public static void printSavedCharacter() {
-        for(Characters savedGuy : classCharacters) {
-            System.out.println(savedGuy.toString());
-        }
-    }
 
-    public static void loadCharacter(){
+    public static Object loadCharacter(){
+
+        boolean loopIsRunning = true;
+        int characterChoice = 0;
         try {
             FileInputStream fileIn = new FileInputStream("SavedCharacters.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -62,24 +59,45 @@ public class ChoosingCharacter extends DungeonRunMain{
         } catch (IOException var3) {
             var3.printStackTrace();
         } catch (ClassNotFoundException var4) {
-            System.out.println("Employee class not found");
+            System.out.println("Hittade inga karaktärer");
             var4.printStackTrace();
         }
 
-        for (int i = 0; i < DungeonRunMain.classCharacters.size(); i++) {
+        while (loopIsRunning){
 
-            System.out.println("Name: " + DungeonRunMain.classCharacters.get(i).getName());
-            System.out.println("Total treasure: " + DungeonRunMain.classCharacters.get(i).getTotalTreasure());
-            if ((DungeonRunMain.classCharacters.get(i).getClassChoice()) == 1) {
-                System.out.println("Klass: Trollkar");
+
+            for (int i = 0; i < DungeonRunMain.classCharacters.size(); i++) {
+
+                System.out.print("\n\t" +"["+ (i+1) +"]"+ " | Name: " + DungeonRunMain.classCharacters.get(i).getName());
+                System.out.print(" | Total treasure: " + DungeonRunMain.classCharacters.get(i).getTotalTreasure());
+                if ((DungeonRunMain.classCharacters.get(i).getClassChoice()) == 1) System.out.print(" | Klass: Riddare");
+                else if(((DungeonRunMain.classCharacters.get(i).getClassChoice())) == 2)System.out.print(" | Klass: Trollkar");
+                else if(((DungeonRunMain.classCharacters.get(i).getClassChoice())) == 3) System.out.print(" | Klass: Tjuv    ");
+                System.out.print(" | Monsters slain: " + DungeonRunMain.classCharacters.get(i).getMonstersSlain());
+                System.out.print(" | Total runs: " + DungeonRunMain.classCharacters.get(i).getTotalRuns()+ "|");
+                System.out.print("\n");
             }
-
-            System.out.println("Class: " + DungeonRunMain.classCharacters.get(i).getClass());
-
-            System.out.println("Monsters slain: " + DungeonRunMain.classCharacters.get(i).getMonstersSlain());
-            System.out.println("Total runs: " + DungeonRunMain.classCharacters.get(i).getTotalRuns());
+            System.out.print("\tIndex val: ");
+            characterChoice = intInputMethod();
+            if (characterChoice<1||characterChoice>DungeonRunMain.classCharacters.size()){
+                System.out.println("\tHittade inte ett matchande index");
+            }
+            else {
+                loopIsRunning = false;
+            }
         }
 
+        return DungeonRunMain.classCharacters.get(characterChoice);
 
+    }
+    public static int intInputMethod(){
+        int userInput;
+        try{
+            Scanner sc = new Scanner(System.in);
+            userInput = sc.nextInt();
+            return userInput;
+        } catch (InputMismatchException allExceptions){
+            return userInput = -1;
+        }
     }
 }

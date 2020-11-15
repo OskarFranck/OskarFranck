@@ -30,12 +30,13 @@ public class DungeonRunMain {
             mainMenuSwitch(mainMenuChoice);
             if (mainMenuChoice == 0){
                 mainLoopIsRunning = false;
-                System.out.println("\tGoodbye!");
+                System.out.println("\tHejdå!");
             }
         }
     }
 
     public static void mainMenuSwitch(int mainMenuChoice){
+        Object chosenCharacterObject = new DungeonRunMain();
         switch (mainMenuChoice){
             case 1:
                 System.out.println("Creating new character");
@@ -43,7 +44,7 @@ public class DungeonRunMain {
                 break;
             case 2:
                 System.out.println("Loading character");
-                //ChoosingCharacter.loadCharacter();
+                chosenCharacterObject = ChoosingCharacter.loadCharacter();
                 break;
 
             case 3:
