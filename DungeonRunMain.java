@@ -40,10 +40,6 @@ public class DungeonRunMain {
                 ChoosingCharacter.createCharacter();
                 break;
             case 2:
-                if(classCharacters.isEmpty()){
-                    System.out.println("There are no saved characters");
-                    break;
-                }else{
                 indexChoice = ChoosingCharacter.loadCharacter();
                 System.out.println(indexChoice);
 
@@ -53,7 +49,6 @@ public class DungeonRunMain {
 
                 //MapArray.displayMap(map);
                 //String[][] mapPosition = MapArray.enter(MapArray.menu2Map());
-                }
 
                 break;
             case 3:
@@ -117,8 +112,8 @@ public class DungeonRunMain {
         }
     }
 
-
     public static void exit() {
-        System.out.println("Exiting the dungeon.");
+        System.out.println("\tExiting the dungeon.\n\tGoodbye!");
+        System.exit(0);
     }
 }

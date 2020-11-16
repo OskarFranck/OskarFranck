@@ -11,6 +11,7 @@ public class Navigate {
                             System.out.println("⌧ You can't walk here! ☞ ☠");
                         } else if (map[row][col - 1].equals(" ♨\t")){
                             System.out.println("Would you like to escape the dungeon? ☞ ♨");
+                            menuEsc();
                         } else {
                             map[row][col] = " ☑\t";
                             map[row][col - 1] = " ⚜️\t";
@@ -21,6 +22,7 @@ public class Navigate {
                             System.out.println("⌧ You can't walk here! ☞ ☠");
                         } else if (map[row - 1][col].equals(" ♨\t")){
                             System.out.println("Would you like to escape the dungeon? ☞ ♨");
+                            menuEsc();
                         } else {
                             map[row][col] = " ☑\t";
                             map[row - 1][col] = " ⚜️\t";
@@ -31,6 +33,7 @@ public class Navigate {
                             System.out.println("⌧ You can't walk here! ☞ ☠");
                         } else if (map[row][col + 1].equals(" ♨\t")){
                             System.out.println("Would you like to escape the dungeon? ☞ ♨");
+                            menuEsc();
                         }  else {
                             map[row][col] = " ☑\t";
                             col++;
@@ -42,6 +45,7 @@ public class Navigate {
                             System.out.println("⌧ You can't walk here! ☞ ☠");
                         } else if (map[row + 1][col].equals(" ♨\t")){
                             System.out.println("Would you like to escape the dungeon? ☞ ♨");
+                            menuEsc();
                         } else {
                             map[row][col] = " ☑\t";
                             row++;
@@ -82,5 +86,19 @@ public class Navigate {
             Sound.setFx(filePath);
         } while (choice < 0 || choice > 4);
         return choice;
+    }
+
+    public static void menuEsc(){
+        System.out.println("\nYour champion: " + ChoosingCharacter.classCharacters.get(DungeonRunMain.indexChoice).getName());
+        System.out.println("\nChoose the size of your map:" );
+        System.out.println("[1] To let " + ChoosingCharacter.classCharacters.get(DungeonRunMain.indexChoice).getName() + " escape.");
+        System.out.println("[2] To continue the game");
+        System.out.println("\nChoose: ");
+        int choice = DungeonRunMain.intInputMethod();
+        if (choice == 1){
+            ChoosingCharacter.saveCurrentCharacter();
+            System.out.println("Character " + ChoosingCharacter.classCharacters.get(DungeonRunMain.indexChoice).getName() + " escaped successfully and was added to the database.");
+            DungeonRunMain.exit();
+        }
     }
 }
