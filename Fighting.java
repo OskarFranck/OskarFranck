@@ -40,19 +40,19 @@ public class Fighting extends GenerateMonster{
 
         //if (DungeonRunMain.classCharacters.)
 
-            if (DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice() == 1) {
+            if (DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice() == 0) {
+                player[0] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getInitiative();
+                player[1] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAttack();
+                player[2] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAgility();
+                player[3] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getHealth();
+
+            } else if (DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice() == 1) {
                 player[0] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getInitiative();
                 player[1] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAttack();
                 player[2] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAgility();
                 player[3] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getHealth();
 
             } else if (DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice() == 2) {
-                player[0] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getInitiative();
-                player[1] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAttack();
-                player[2] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAgility();
-                player[3] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getHealth();
-
-            } else if (DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice() == 3) {
                 player[0] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getInitiative();
                 player[1] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAttack();
                 player[2] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAgility();

@@ -42,12 +42,12 @@ public class ChoosingCharacter extends DungeonRunMain{
 
         while(characterClassLoop){
             System.out.println("\tVälj typ av karaktär: ");
-            System.out.println("\t[1] Riddare");
-            System.out.println("\t[2] Trollkarlen");
-            System.out.println("\t[3] Tjuven");
+            System.out.println("\t[0] Riddare");
+            System.out.println("\t[1] Trollkarlen");
+            System.out.println("\t[2] Tjuven");
             System.out.print("Val: ");
             characterClass = intInputMethod();
-            if (characterClass>3 || characterClass<1){
+            if (characterClass>2 || characterClass<0){
                 System.out.println("\tFelaktig inamtning");
             }
             else {
@@ -118,9 +118,9 @@ public class ChoosingCharacter extends DungeonRunMain{
 
                 System.out.print("\n\t" +"["+ (i) +"]"+ " | Name: " + DungeonRunMain.classCharacters.get(i).getName());
                 System.out.print(" | Total treasure: " + DungeonRunMain.classCharacters.get(i).getTotalTreasure());
-                if ((DungeonRunMain.classCharacters.get(i).getClassChoice()) == 1) System.out.print(" | Klass: Riddare");
-                else if(((DungeonRunMain.classCharacters.get(i).getClassChoice())) == 2)System.out.print(" | Klass: Trollkar");
-                else if(((DungeonRunMain.classCharacters.get(i).getClassChoice())) == 3) System.out.print(" | Klass: Tjuv    ");
+                if ((DungeonRunMain.classCharacters.get(i).getClassChoice()) == 0) System.out.print(" | Klass: Riddare");
+                else if(((DungeonRunMain.classCharacters.get(i).getClassChoice())) == 1)System.out.print(" | Klass: Trollkar");
+                else if(((DungeonRunMain.classCharacters.get(i).getClassChoice())) == 2) System.out.print(" | Klass: Tjuv    ");
                 System.out.print(" | Monsters slain: " + DungeonRunMain.classCharacters.get(i).getMonstersSlain());
                 System.out.print(" | Total runs: " + DungeonRunMain.classCharacters.get(i).getTotalRuns()+ "|");
                 System.out.print("\n");
