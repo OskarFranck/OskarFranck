@@ -43,4 +43,9 @@ public class Classes extends ChoosingCharacter {
     public void setAgility(double agility) {
         this.agility = agility;
     }
+
+    @Override
+    public String toString() {
+        return "\tInitiative = " + initiative +"\tHealth = " + health +"\tAttack = " + attack + "\tAgility = " + agility +"";
+    }
 }

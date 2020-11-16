@@ -27,7 +27,7 @@ public class DungeonRunMain {
             mainMenuSwitch(mainMenuChoice);
             if (mainMenuChoice == 0){
                 mainLoopIsRunning = false;
-                System.out.println("\tHejdå!");
+                System.out.println("\tGoodbye!");
             }
         }
     }
@@ -40,9 +40,12 @@ public class DungeonRunMain {
                 ChoosingCharacter.createCharacter();
                 break;
             case 2:
+                if(classCharacters.isEmpty()){
+                    System.out.println("There are no saved characters");
+                    break;
+                }else{
                 indexChoice = ChoosingCharacter.loadCharacter();
                 System.out.println(indexChoice);
-
 
                 //String[][] map = MapArray.createMap(MapArray.menuMap());
                 String[][] map = MapArray.createMap(MapArray.menuMap());
@@ -50,6 +53,8 @@ public class DungeonRunMain {
 
                 //MapArray.displayMap(map);
                 //String[][] mapPosition = MapArray.enter(MapArray.menu2Map());
+                }
+
                 break;
             case 3:
                 music();
@@ -58,7 +63,7 @@ public class DungeonRunMain {
                 exit();
                 break;
             default:
-                System.out.println("\n\tNågot gick fel: vänligen skriv in en siffra från menyn som visas.");
+                System.out.println("\n\tError: please insert something from the menu shown");
                 break;
         }
     }
@@ -69,7 +74,7 @@ public class DungeonRunMain {
         System.out.println("\t\t   ---  ===  \uD835\uDD3B\uD835\uDD4Cℕ\uD835\uDD3E\uD835\uDD3C\uD835\uDD46ℕ ℝ\uD835\uDD4Cℕ®  ===  ---   \t\t");
         System.out.println("\t\t\t\t\t \uD835\uDD7F\uD835\uDD8D\uD835\uDD8A \uD835\uDD6C\uD835\uDD89\uD835\uDD9B\uD835\uDD8A\uD835\uDD93\uD835\uDD99\uD835\uDD9A\uD835\uDD97\uD835\uDD8A \t\t");
         System.out.println();
-        System.out.println("\t\t\t\t༄  Version (1.0004)  ❦\n");
+        //System.out.println("\t\t\t\t༄  Version (1.0004)  ❦\n");
     }
 
     public static void music(){
@@ -79,11 +84,11 @@ public class DungeonRunMain {
     }
 
     public static int mainMenuPrint(){
-        System.out.println("\n\tVälkommen till Dungeon Run!");
-        System.out.println("\n\t[1] Skapa en ny karaktär");
-        System.out.println("\n\t[2] Ladda en sparad karaktär");
-        System.out.println("\n\t[3] Sätt på eller stäng av musiken");
-        System.out.println("\n\t[0] Avsluta program");
+        System.out.println("\n\tWelcome to Dungeon Run");
+        System.out.println("\n\t[1] Create new character");
+        System.out.println("\n\t[2] Load existing character");
+        System.out.println("\n\t[3] Turn on/off the music");
+        System.out.println("\n\t[0] Exit program");
         System.out.print("\tVal: ");
         int mainMenuChoice = intInputMethod();
         return mainMenuChoice;
@@ -107,7 +112,7 @@ public class DungeonRunMain {
             userInput = sc.next();
             return userInput;
         } catch (Exception allExceptions){
-            System.out.println("\t\nError: Enbart text är tillåtet!");
+            System.out.println("\t\nError: only text is allowed");
             return userInput = "";
         }
     }

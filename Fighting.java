@@ -106,10 +106,10 @@ public class Fighting extends GenerateMonster{
         double monsterIni = rollDice(monster[0]);
 
         if (playerIni < monsterIni) {
-            System.out.println("Monster is faster");
+            System.out.println("Monster is faster and attack first");
             fightingM(player, monster);
         } else if (playerIni > monsterIni) {
-            System.out.println("Player is faster");
+            System.out.println("Player is faster and attack first");
             fightingP(player, monster);
         }
     }
@@ -120,13 +120,16 @@ public class Fighting extends GenerateMonster{
 
         if (playerAttack > monsterDefend) {
             monster[3] = monster[3] - 1;
-            System.out.println("The player swings his sword and HITS!");
-            System.out.println("Monster loses one HP");
-            System.out.println("HP left: " + monster[3]);
+            System.out.println("The player swings his sword and HITS!\nMonster loses one HP\nHP left: "+ monster[3]);
+           // System.out.println("Monster loses one HP");
+           // System.out.println("HP left: " + monster[3]);
+            if (monster[3] <= 0) {
+                System.out.println("The beast falls dead to the ground");
+            }
         } else {
-            System.out.println("The player swings his sword and MISSES!");
-            System.out.println("Monster Dodges");
-            System.out.println("HP left: " + monster[3]);
+            System.out.println("The player swings his sword and MISSES!\nMonster Dodges\nHP left: "+ monster[3]);
+           // System.out.println("Monster Dodges");
+           // System.out.println("HP left: " + monster[3]);
         }
     }
 
@@ -136,11 +139,19 @@ public class Fighting extends GenerateMonster{
 
         if (monsterAttack > playerDefend) {
             player[3] = player[3] - 1;
-            System.out.println("Player loses one HP");
-            System.out.println("HP left: " + player[3]);
+            System.out.println("The monster swings his club at you and HITS!\nPlayer loses one HP\nHP left: " + player[3]);
+           // System.out.println("Player loses one HP");
+           // System.out.println("HP left: " + player[3]);
+            if (player[3] <= 1) {
+                System.out.println("You've lost a lot of blood and will soon perish");
+            } else if (player[3] <= 0) {
+                System.out.println("You are DEAD!");
+
+            }
         } else {
-            System.out.println("Player dodges");
-            System.out.println("HP left: " + player[3]);
+            System.out.println("The monster swings his club at you and MISSES!\nPlayer dodges\nHP left: " + player[3]);
+           // System.out.println("Player dodges");
+           // System.out.println("HP left: " + player[3]);
         }
     }
     public static void fightingM(double[] player, double[] monster) {
@@ -168,7 +179,7 @@ public class Fighting extends GenerateMonster{
 
         while(loopIsRunning){
 
-            System.out.println("The fear is running through your vain\n [1]. Fight [2]. Flee");
+            System.out.println("The fear is running through your veins [1].Fight or try to [2].Flee");
 
             fleeInput = DungeonRunMain.intInputMethod();
             if(fleeInput != 2){
@@ -177,8 +188,10 @@ public class Fighting extends GenerateMonster{
                 switch (fleeInput) {
                     case 2:
                         if (randomGen <= chanceToFlee) {
+                            System.out.println("You manage to escaped...");
                             return false;
                         } else {
+                            System.out.println("You can't run, stay and fight you coward!");
                             return true;
                         }
                     //default:
@@ -186,7 +199,13 @@ public class Fighting extends GenerateMonster{
                 }
             }
         }
+        System.out.println("We stand our ground and fight!");
         return true;
+    }
+    public static void battleMusic(){
+        String filePath = "BattleFx.wav";
+        Sound music = new Sound();
+        Sound.setMusic(filePath);
     }
 
 
@@ -242,35 +261,3 @@ public class Fighting extends GenerateMonster{
         return diceTotalScore;
     }
 }
-
-/*
-EMPLOYEE STATISTIC
-
-import java.util.ArrayList;
-import java.util.Collections;
-
-public class EmpStat extends EmpManage{
-    static ArrayList<Integer> salary = new ArrayList<>();
-    static ArrayList<String> female = new ArrayList<>();
-    static ArrayList<String> male = new ArrayList<>();
-
-    //Metoden som kollar % på företagens könsuppdelning
-    public static void genderPercentage() {
-        male.clear();
-        female.clear();
-        for (int i = 0; i < employees.size(); i++) {
-            if ("male".equals(employees.get(i).getGender().toLowerCase())) {
-                male.add(employees.get(i).getGender());
-            } else {
-                female.add(employees.get(i).getGender());
-            }
-        }
-        double mS = male.size();
-        double fS = female.size();
-        double eS = employees.size();
-        System.out.println("Male percentage: \t" + (mS/eS)*100 + " %");
-        System.out.println("Female percentage: \t" + (fS/eS)*100 + " %");
-        MenuList.menuStats();
-    }
-}
-*/

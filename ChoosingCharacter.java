@@ -13,25 +13,32 @@ public class ChoosingCharacter extends DungeonRunMain{
         } catch (IOException var3) {
             var3.printStackTrace();
         } catch (ClassNotFoundException var4) {
-            System.out.println("Hittade inga karaktärer");
+            System.out.println("Did not find character");
             var4.printStackTrace();
         }
     }
 
     public static void createCharacter(){
 
-        try {
-            FileInputStream fileIn = new FileInputStream("SavedCharacters.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            DungeonRunMain.classCharacters = (ArrayList)in.readObject();
-            in.close();
-            fileIn.close();
-        } catch (IOException var3) {
-            var3.printStackTrace();
-        } catch (ClassNotFoundException var4) {
-            System.out.println("Hittade inga karaktärer");
-            var4.printStackTrace();
+        if(DungeonRunMain.classCharacters.isEmpty()){
+
+        }else{
+
+            try {
+                FileInputStream fileIn = new FileInputStream("SavedCharacters.ser");
+                ObjectInputStream in = new ObjectInputStream(fileIn);
+                DungeonRunMain.classCharacters = (ArrayList)in.readObject();
+                in.close();
+                fileIn.close();
+            } catch (IOException var3) {
+                var3.printStackTrace();
+            } catch (ClassNotFoundException var4) {
+                System.out.println("Did not find character");
+                var4.printStackTrace();
+            }
         }
+
+
 
 
         boolean characterClassLoop = true;
@@ -41,14 +48,14 @@ public class ChoosingCharacter extends DungeonRunMain{
         int check = 0;
 
         while(characterClassLoop){
-            System.out.println("\tVälj typ av karaktär: ");
-            System.out.println("\t[0] Riddare");
-            System.out.println("\t[1] Trollkarlen");
-            System.out.println("\t[2] Tjuven");
-            System.out.print("Val: ");
+            System.out.println("\tChoose your class: ");
+            System.out.println("\t[0] Knight" + DungeonRunMain.classesList.get(0).toString());
+            System.out.println("\t[1] Wizard" + DungeonRunMain.classesList.get(1).toString());
+            System.out.println("\t[2] Thief" + DungeonRunMain.classesList.get(2).toString());
+            System.out.print("\tChoice: ");
             characterClass = intInputMethod();
             if (characterClass>2 || characterClass<0){
-                System.out.println("\tFelaktig inamtning");
+                System.out.println("\tError: invalid input");
             }
             else {
                 characterClassLoop=false;
@@ -57,7 +64,7 @@ public class ChoosingCharacter extends DungeonRunMain{
 
         while(characterClassLoop2){
             check = 0;
-            System.out.print("\tSkriv in karaktärens namn: ");
+            System.out.print("\tEnter your characters name: ");
             name = DungeonRunMain.lineInputMethod();
             if(DungeonRunMain.classCharacters.isEmpty()){
                 characterClassLoop2 =false;
@@ -71,7 +78,7 @@ public class ChoosingCharacter extends DungeonRunMain{
                     characterClassLoop2 = false;
                 }
                 else{
-                    System.out.println("\tNamnet är redan taget, välj ett annat namn");
+                    System.out.println("\tName already exists, choose another");
                 }
             }
 
@@ -107,7 +114,7 @@ public class ChoosingCharacter extends DungeonRunMain{
         } catch (IOException var3) {
             var3.printStackTrace();
         } catch (ClassNotFoundException var4) {
-            System.out.println("\tHittade inga karaktärer");
+            System.out.println("\tDid not find any characters");
             var4.printStackTrace();
         }
 
@@ -118,17 +125,17 @@ public class ChoosingCharacter extends DungeonRunMain{
 
                 System.out.print("\n\t" +"["+ (i) +"]"+ " | Name: " + DungeonRunMain.classCharacters.get(i).getName());
                 System.out.print(" | Total treasure: " + DungeonRunMain.classCharacters.get(i).getTotalTreasure());
-                if ((DungeonRunMain.classCharacters.get(i).getClassChoice()) == 0) System.out.print(" | Klass: Riddare");
-                else if(((DungeonRunMain.classCharacters.get(i).getClassChoice())) == 1)System.out.print(" | Klass: Trollkar");
-                else if(((DungeonRunMain.classCharacters.get(i).getClassChoice())) == 2) System.out.print(" | Klass: Tjuv    ");
+                if ((DungeonRunMain.classCharacters.get(i).getClassChoice()) == 0) System.out.print(" | Class: Riddare");
+                else if(((DungeonRunMain.classCharacters.get(i).getClassChoice())) == 1)System.out.print(" | Class: Trollkar");
+                else if(((DungeonRunMain.classCharacters.get(i).getClassChoice())) == 2) System.out.print(" | Class: Tjuv    ");
                 System.out.print(" | Monsters slain: " + DungeonRunMain.classCharacters.get(i).getMonstersSlain());
                 System.out.print(" | Total runs: " + DungeonRunMain.classCharacters.get(i).getTotalRuns()+ "|");
                 System.out.print("\n");
             }
-            System.out.print("\tIndex val: ");
+            System.out.print("\tIndex choice: ");
             characterChoice = DungeonRunMain.intInputMethod();
             if (characterChoice<0||characterChoice>DungeonRunMain.classCharacters.size()){
-                System.out.println("\tHittade inte ett matchande index");
+                System.out.println("\tDid not find a matching index");
             }
             else {
                 loopIsRunning = false;
