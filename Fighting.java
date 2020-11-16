@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Fighting extends GenerateMonster{
 
@@ -12,7 +10,7 @@ public class Fighting extends GenerateMonster{
     */
 
     static Classes newPlayer = null;
-    static ArrayList<Monster> monstersForFight = new ArrayList<>();
+    static ArrayList<Integer> orderForFight = new ArrayList<>();
 
     /*
     1. riddare
@@ -38,35 +36,45 @@ public class Fighting extends GenerateMonster{
     }
 
     public static void getMonster() {
-        monstersForFight.clear();
-        monstersForFight = GenerateMonster.randomMonster();
+        GenerateMonster.monster.clear();
+        GenerateMonster.monster = GenerateMonster.randomMonster();
 
-        for (int i = 0; i < monstersForFight.size(); i++) {
-            if (monstersForFight.get(i) != null) {
-                whoStartsFight(monstersForFight, getPlayer());
+        for (int i = 0; i < GenerateMonster.monster.size(); i++) {
+            if (GenerateMonster.monster.get(i) != null) {
                 System.out.println("There is something lurking in the room...");
+                whoStartsFight(GenerateMonster.monster, getPlayer());
                 break;
-            } else if (i == monstersForFight.size() -1 ) {
+            } else if (i == GenerateMonster.monster.size() -1 ) {
                 System.out.println("The room seams to be empty");
             }
         }
     }
 
-    public static void whoStartsFight(ArrayList<Monster> monstersForFight, Classes newPlayer) {
-        double playerInitiative = rollDice(newPlayer.getInitiative());
-        double monsterInitiative = 0;
-        for (int i = 0; i < monstersForFight.size(); i++) {
-            monsterInitiative = rollDice(monstersForFight.get(i).getInitiative());
+    public static void whoStartsFight(ArrayList<Monster> monster, Classes newPlayer) {
+        int attackOrder =0;
+        orderForFight.clear();
+
+        for (int j = 0; j < newPlayer.getInitiative(); j++) {
+            attackOrder += rollDice(1);
+        }
+        orderForFight.add(attackOrder);
+
+        for (int i = 0; i < monster.size(); i++) {
+            attackOrder = 0;
+
+            for (int j = 0; j < monster.get(i).getInitiative(); j++) {
+                attackOrder += rollDice(1);
+            }
+            orderForFight.add(attackOrder);
         }
 
-        while (tryToFlee(getPlayer().getAgility()))
-        if (playerInitiative > monsterInitiative) {
-            fightingP();
-        } else {
-            fightingM();
-        }
+        Comparator c = Collections.reverseOrder();
+        Collections.sort(orderForFight, c);
+        System.out.println(orderForFight);
+
     }
 
+    /*
     public static void playerAttack() {
         ArrayList<Monster> monsters;
         double playerAttack = rollDice(newPlayer.getAttack());
@@ -138,7 +146,7 @@ public class Fighting extends GenerateMonster{
 
 
     /*
-    public static int rollDice(int numberOfDice) {
+    public static int rollDiceInt(int numberOfDice) {
         int diceThrow;
         int diceTotalScore = 0;
         Random rand = new Random();
@@ -154,6 +162,7 @@ public class Fighting extends GenerateMonster{
         }
         return diceTotalScore;
     }
+
 
         public static Monster getMonster() {
         for (int i = 0; i < GenerateMonster.monster.size(); i++) {

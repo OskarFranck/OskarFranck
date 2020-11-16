@@ -16,15 +16,19 @@ public class GenerateMonster {
             if (randNumber < 20) {
                 Monster giantSpider = new Giantspider(7, 1, 2, 3, 0.20);
                 monster.add(giantSpider);
+                System.out.println("Giantspider approaches");
             } else if (randNumber < 35) {
                 Monster skeleton = new Skeleton(4, 2, 3, 3, 0.15);
                 monster.add(skeleton);
+                System.out.println("Skeleton approaches");
             } else if (randNumber < 45) {
                 Monster orc = new Orc(6, 3, 4, 4, 0.10);
                 monster.add(orc);
+                System.out.println("Orc approaches");
             } else if (randNumber < 50) {
                 Monster troll = new Troll(2, 4, 7, 2, 0.05);
                 monster.add(troll);
+                System.out.println("Troll approaches");
             }
             loopTime++;
         }

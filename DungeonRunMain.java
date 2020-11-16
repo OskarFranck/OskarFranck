@@ -41,6 +41,7 @@ public class DungeonRunMain {
             case 1:
                 //System.out.println("Creating new character");
                 ChoosingCharacter.createCharacter();
+                Fighting.getMonster();
                 break;
             case 2:
                 //System.out.println("Loading character");
