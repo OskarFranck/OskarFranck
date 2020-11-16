@@ -120,11 +120,11 @@ public class Fighting extends GenerateMonster{
 
         if (playerAttack > monsterDefend) {
             monster[3] = monster[3] - 1;
-            System.out.println("The knight swings his sword and HITS!");
-            System.out.println("Monster looses one HP");
+            System.out.println("The player swings his sword and HITS!");
+            System.out.println("Monster loses one HP");
             System.out.println("HP left: " + monster[3]);
         } else {
-            System.out.println("The knight swings his sword and MISSES!");
+            System.out.println("The player swings his sword and MISSES!");
             System.out.println("Monster Dodges");
             System.out.println("HP left: " + monster[3]);
         }
@@ -136,7 +136,7 @@ public class Fighting extends GenerateMonster{
 
         if (monsterAttack > playerDefend) {
             player[3] = player[3] - 1;
-            System.out.println("Player looses one HP");
+            System.out.println("Player loses one HP");
             System.out.println("HP left: " + player[3]);
         } else {
             System.out.println("Player dodges");
@@ -144,17 +144,17 @@ public class Fighting extends GenerateMonster{
         }
     }
     public static void fightingM(double[] player, double[] monster) {
-        do {
+        while (monster[3] > 0 && player[3] > 0 && tryToFlee(player[2])) {
             monsterAttack(player, monster);
             playerAttack(player, monster);
-        } while (monster[3] > 0 && player[3] > 0);
+        }
     }
 
     public static void fightingP(double[] player, double[] monster) {
-        do {
+        while (monster[3] > 0 && player[3] > 0 && tryToFlee(player[2])) {
             playerAttack(player, monster);
             monsterAttack(player, monster);
-        } while (monster[3] > 0 && player[3] > 0);
+        }
     }
 
     public static boolean tryToFlee(double agility) {
@@ -168,7 +168,7 @@ public class Fighting extends GenerateMonster{
 
         while(loopIsRunning){
 
-            System.out.println("You see a monster, will you fight or try to flee?\n [1]. Fight [2]. Flee");
+            System.out.println("The fear is running through your vain\n [1]. Fight [2]. Flee");
 
             fleeInput = DungeonRunMain.intInputMethod();
             if(fleeInput != 2){

@@ -3,7 +3,20 @@ import java.io.*;
 public class ChoosingCharacter extends DungeonRunMain{
 
 
-
+    public static void saveCurrentCharacter(){
+        try {
+            FileInputStream fileIn = new FileInputStream("SavedCharacters.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            DungeonRunMain.classCharacters = (ArrayList)in.readObject();
+            in.close();
+            fileIn.close();
+        } catch (IOException var3) {
+            var3.printStackTrace();
+        } catch (ClassNotFoundException var4) {
+            System.out.println("Hittade inga karaktärer");
+            var4.printStackTrace();
+        }
+    }
 
     public static void createCharacter(){
 

@@ -73,7 +73,7 @@ public class Navigate {
             System.out.println("[2] Go up!");
             System.out.println("[3] Go right!");
             System.out.println("[4] Go down!");*/
-            System.out.println("[0] Escape the dungeon!");
+            //System.out.println("[0] Escape the dungeon!");
             System.out.println("\nChoose: ");
             choice = DungeonRunMain.intInputMethod(); //Denna metod kallas på i Mainmetoden för att bruka Scanner.
 

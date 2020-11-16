@@ -13,7 +13,8 @@ public class Room {
             System.out.println("You see "+monsterCount+" monster(s) in the room");
             Fighting.fightMainBody(monsterCount);
         }
-        //DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getTotalTreasure() = Treasuregenerator.treasureGenerator();
+        DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).setTotalTreasure(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getTotalTreasure()+Treasuregenerator.treasureGenerator());
+        System.out.println("Total treasure so far: " + DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getTotalTreasure());
 
 
 

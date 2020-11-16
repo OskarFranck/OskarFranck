@@ -4,6 +4,7 @@ public class Classes extends ChoosingCharacter {
     private double health;
     private double attack;
     private double agility;
+
     public Classes(double initiative, double health, double attack, double agility) { //constructor
         this.initiative = initiative;
         this.health = health;
