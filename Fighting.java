@@ -3,10 +3,10 @@ import java.util.*;
 public class Fighting extends GenerateMonster{
 
     /*
-    static Monster giantSpider = new Giantspider (7, 1, 2, 3, 0.20);
-    static Monster skeleton = new Skeleton (4, 2, 3, 3, 0.15);
-    static Monster orc = new Orc (6, 3, 4, 4, 0.10);
-    static Monster troll = new Troll (2, 4, 7, 2, 0.05);
+    static Monster giantSpider = new Giantspider (7, 1, 2, 3);
+    static Monster skeleton = new Skeleton (4, 2, 3, 3);
+    static Monster orc = new Orc (6, 3, 4, 4);
+    static Monster troll = new Troll (2, 4, 7, 2);
     */
 
     static Classes newPlayer = null;
@@ -18,105 +18,141 @@ public class Fighting extends GenerateMonster{
     3. tjuv
     */
 
+    public static void fightMainBody(int monsterCount){
 
-    public static Classes getPlayer() {
-        for (int i = 0; i < DungeonRunMain.classesList.size(); i++) {
-            if (DungeonRunMain.classesList.get(i) instanceof Knight) {
-                newPlayer = DungeonRunMain.classesList.get(i);
-                break;
-            } else if (DungeonRunMain.classesList.get(i) instanceof Wizard) {
-                newPlayer = DungeonRunMain.classesList.get(i);
-                break;
-            } else if (DungeonRunMain.classesList.get(i) instanceof Thief) {
-                newPlayer = DungeonRunMain.classesList.get(i);
-                break;
-            }
+        for (int i = 0; i < monsterCount; i++) {
+           // getPlayer();
+
+           // getMonster();
+            whoStartsFight(getPlayer(), getMonster());
         }
-        return newPlayer;
     }
 
-    public static void getMonster() {
+
+    public static double[] getPlayer() {
+        double[] player = new double[4]; //Nuvarande värde på antalet info som slussas vidare med player
+        //Int               = 0
+        //Atk               = 1
+        //Agi               = 2
+        //Hp                = 3
+        //Treasure          = 4?
+        //Monsters slain    = 5?
+
+        //if (DungeonRunMain.classCharacters.)
+
+            if (DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice() == 1) {
+                player[0] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getInitiative();
+                player[1] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getAttack();
+                player[2] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getAgility();
+                player[3] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getHealth();
+
+            } else if (DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice() == 2) {
+                player[0] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getInitiative();
+                player[1] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getAttack();
+                player[2] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getAgility();
+                player[3] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getHealth();
+
+            } else if (DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice() == 3) {
+                player[0] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getInitiative();
+                player[1] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getAttack();
+                player[2] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getAgility();
+                player[3] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getHealth();
+            }
+
+        return player;
+    }
+
+    public static double[] getMonster() {
         GenerateMonster.monster.clear();
-        GenerateMonster.monster = GenerateMonster.randomMonster();
+        monster = GenerateMonster.randomMonster();
+        double[] monster = new double[4];//Plockar antal värden från monster
+        //Int               = 0
+        //Atk               = 1
+        //Agi               = 2
+        //Hp                = 3
 
         for (int i = 0; i < GenerateMonster.monster.size(); i++) {
-            if (GenerateMonster.monster.get(i) != null) {
-                System.out.println("There is something lurking in the room...");
-                whoStartsFight(GenerateMonster.monster, getPlayer());
-                break;
-            } else if (i == GenerateMonster.monster.size() -1 ) {
-                System.out.println("The room seams to be empty");
+            if (GenerateMonster.monster.get(i) instanceof Giantspider) {
+                monster[0] = GenerateMonster.monster.get(i).getInitiative();
+                monster[1] = GenerateMonster.monster.get(i).getAttack();
+                monster[2] = GenerateMonster.monster.get(i).getAgility();
+                monster[3] = GenerateMonster.monster.get(i).getDurability();
+
+            } else if (GenerateMonster.monster.get(i) instanceof Skeleton) {
+                monster[0] = GenerateMonster.monster.get(i).getInitiative();
+                monster[1] = GenerateMonster.monster.get(i).getAttack();
+                monster[2] = GenerateMonster.monster.get(i).getAgility();
+                monster[3] = GenerateMonster.monster.get(i).getDurability();
+
+            } else if (GenerateMonster.monster.get(i) instanceof Orc) {
+                monster[0] = GenerateMonster.monster.get(i).getInitiative();
+                monster[1] = GenerateMonster.monster.get(i).getAttack();
+                monster[2] = GenerateMonster.monster.get(i).getAgility();
+                monster[3] = GenerateMonster.monster.get(i).getDurability();
+
+            } else if (GenerateMonster.monster.get(i) instanceof Troll) {
+                monster[0] = GenerateMonster.monster.get(i).getInitiative();
+                monster[1] = GenerateMonster.monster.get(i).getAttack();
+                monster[2] = GenerateMonster.monster.get(i).getAgility();
+                monster[3] = GenerateMonster.monster.get(i).getDurability();
             }
+        }
+
+        return monster;
+    }
+
+    public static void whoStartsFight(double[] player, double[] monster) {
+        double playerIni = rollDice(player[0]);
+        double monsterIni = rollDice(monster[0]);
+
+        if (playerIni < monsterIni) {
+            fightingM(player, monster);
+        } else if (playerIni > monsterIni) {
+            fightingP(player, monster);
         }
     }
 
-    public static void whoStartsFight(ArrayList<Monster> monster, Classes newPlayer) {
-        int attackOrder =0;
-        orderForFight.clear();
-
-        for (int j = 0; j < newPlayer.getInitiative(); j++) {
-            attackOrder += rollDice(1);
-        }
-        orderForFight.add(attackOrder);
-
-        for (int i = 0; i < monster.size(); i++) {
-            attackOrder = 0;
-
-            for (int j = 0; j < monster.get(i).getInitiative(); j++) {
-                attackOrder += rollDice(1);
-            }
-            orderForFight.add(attackOrder);
-        }
-
-        Comparator c = Collections.reverseOrder();
-        Collections.sort(orderForFight, c);
-        System.out.println(orderForFight);
-
-    }
-
-    /*
-    public static void playerAttack() {
-        ArrayList<Monster> monsters;
-        double playerAttack = rollDice(newPlayer.getAttack());
-        double monsterDefend = rollDice(newMonster1.getAgility());
+    public static void playerAttack(double[] player, double[] monster) {
+        double playerAttack = rollDice(player[1]);
+        double monsterDefend = rollDice(monster[2]);
 
         if (playerAttack > monsterDefend) {
-            newMonster1.setDurability(newMonster1.getDurability() -1);
+            monster[3] = monster[3] - 1;
             System.out.println("The knight swings his sword and HITS!");
             System.out.println("Monster looses one HP");
-            System.out.println("HP left: " + newMonster1.getDurability());
+            System.out.println("HP left: " + monster[3]);
         } else {
             System.out.println("The knight swings his sword and MISSES!");
             System.out.println("Monster Dodges");
-            System.out.println("HP left: " + newMonster1.getDurability());
+            System.out.println("HP left: " + monster[3]);
         }
     }
 
-    public static void monsterAttack() {
-        double monsterAttack = rollDice(newMonster1.getAttack());
-        double playerDefend = rollDice(newPlayer.getAgility());
+    public static void monsterAttack(double[] player, double[] monster) {
+        double monsterAttack = rollDice(monster[1]);
+        double playerDefend = rollDice(player[2]);
 
         if (monsterAttack > playerDefend) {
-            newPlayer.setHealth(newPlayer.getHealth() -1);
+            player[3] = player[3] - 1;
             System.out.println("Player looses one HP");
-            System.out.println("HP left: " + newPlayer.getHealth());
+            System.out.println("HP left: " + player[3]);
         } else {
             System.out.println("Player dodges");
-            System.out.println("HP left: " + newPlayer.getHealth());
+            System.out.println("HP left: " + player[3]);
         }
     }
-    public static void fightingM() {
+    public static void fightingM(double[] player, double[] monster) {
         do {
-            monsterAttack();
-            playerAttack();
-        } while (newMonster1.getDurability() > 0 && newPlayer.getHealth() > 0);
+            monsterAttack(player, monster);
+            playerAttack(player, monster);
+        } while (monster[3] > 0 && player[3] > 0);
     }
 
-    public static void fightingP() {
+    public static void fightingP(double[] player, double[] monster) {
         do {
-            playerAttack();
-            monsterAttack();
-        } while (newPlayer.getHealth() > 0 && newMonster1.getDurability() > 0);
+            playerAttack(player, monster);
+            monsterAttack(player, monster);
+        } while (monster[3] > 0 && player[3] > 0);
     }
 
     public static boolean tryToFlee(double agility) {
@@ -197,3 +233,35 @@ public class Fighting extends GenerateMonster{
         return diceTotalScore;
     }
 }
+
+/*
+EMPLOYEE STATISTIC
+
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class EmpStat extends EmpManage{
+    static ArrayList<Integer> salary = new ArrayList<>();
+    static ArrayList<String> female = new ArrayList<>();
+    static ArrayList<String> male = new ArrayList<>();
+
+    //Metoden som kollar % på företagens könsuppdelning
+    public static void genderPercentage() {
+        male.clear();
+        female.clear();
+        for (int i = 0; i < employees.size(); i++) {
+            if ("male".equals(employees.get(i).getGender().toLowerCase())) {
+                male.add(employees.get(i).getGender());
+            } else {
+                female.add(employees.get(i).getGender());
+            }
+        }
+        double mS = male.size();
+        double fS = female.size();
+        double eS = employees.size();
+        System.out.println("Male percentage: \t" + (mS/eS)*100 + " %");
+        System.out.println("Female percentage: \t" + (fS/eS)*100 + " %");
+        MenuList.menuStats();
+    }
+}
+*/

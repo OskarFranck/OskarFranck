@@ -149,6 +149,7 @@ public class MapArray {
     }*/
 
     public static int menuMap(){
+        System.out.println("\nYour champion: " + ChoosingCharacter.classCharacters.get(DungeonRunMain.indexChoice).getName());
         System.out.println("\nChoose the size of your map:");
         System.out.println("[1] Small Map");
         System.out.println("[2] Medium Map");

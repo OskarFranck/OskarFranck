@@ -5,10 +5,9 @@ import java.util.ArrayList;
 
 public class DungeonRunMain {
 
-    static ArrayList<Characters> classCharacters = new ArrayList<>();
-    static ArrayList<Classes> classesList = new ArrayList<>();
-
-
+    static ArrayList<Characters> classCharacters = new ArrayList<>();//Detta är alla dina sparade karraktärer
+    static ArrayList<Classes> classesList = new ArrayList<>();//Detta är alla aktuella spelar-klasser du kan välja
+    static int indexChoice;
 
     public static void main(String[] args) {
 
@@ -18,8 +17,6 @@ public class DungeonRunMain {
         classesList.add(knight);
         classesList.add(wizard);
         classesList.add(thief);
-
-
 
         boolean mainLoopIsRunning = true;
         int mainMenuChoice;
@@ -36,20 +33,21 @@ public class DungeonRunMain {
     }
 
     public static void mainMenuSwitch(int mainMenuChoice){
-        Object chosenCharacterObject = new DungeonRunMain();
+        int index = 0;
+
         switch (mainMenuChoice){
             case 1:
-                //System.out.println("Creating new character");
                 ChoosingCharacter.createCharacter();
-                Fighting.getMonster();
                 break;
             case 2:
-                //System.out.println("Loading character");
-                chosenCharacterObject = ChoosingCharacter.loadCharacter();
+                indexChoice = ChoosingCharacter.loadCharacter();
+                System.out.println(indexChoice);
+
 
                 //String[][] map = MapArray.createMap(MapArray.menuMap());
                 String[][] map = MapArray.createMap(MapArray.menuMap());
                 Navigate.move(map);
+
                 //MapArray.displayMap(map);
                 //String[][] mapPosition = MapArray.enter(MapArray.menu2Map());
                 break;
@@ -60,10 +58,11 @@ public class DungeonRunMain {
                 exit();
                 break;
             default:
-                System.out.println("\n\tError: please insert a valid number from the menu shown");
+                System.out.println("\n\tNågot gick fel: vänligen skriv in en siffra från menyn som visas.");
                 break;
         }
     }
+
 
     public static void welcome(){   //Version av Dungeon Run
         System.out.println("\n\n\t\t\t\t\t\t   ⚜️\t\t");
@@ -83,7 +82,6 @@ public class DungeonRunMain {
         System.out.println("\n\tVälkommen till Dungeon Run!");
         System.out.println("\n\t[1] Skapa en ny karaktär");
         System.out.println("\n\t[2] Ladda en sparad karaktär");
-        //System.out.println("\n\t[3] Create a new map");
         System.out.println("\n\t[3] Sätt på eller stäng av musiken");
         System.out.println("\n\t[0] Avsluta program");
         System.out.print("\tVal: ");
@@ -92,15 +90,28 @@ public class DungeonRunMain {
     }
 
     public static int intInputMethod(){
-            int userInput;
-            try{
-                Scanner sc = new Scanner(System.in);
-                userInput = sc.nextInt();
-                return userInput;
-            } catch (InputMismatchException allExceptions){
-                return userInput = 9;
-            }
+        int userInput;
+        try{
+            Scanner sc = new Scanner(System.in);
+            userInput = sc.nextInt();
+            return userInput;
+        } catch (InputMismatchException allExceptions){
+            return userInput = 9;
+        }
     }
+    //Detta är en ny String-metod för inmatning i menyerna
+    public static String lineInputMethod(){
+        String userInput;
+        try{
+            Scanner sc = new Scanner(System.in);
+            userInput = sc.next();
+            return userInput;
+        } catch (Exception allExceptions){
+            System.out.println("\t\nError: Enbart text är tillåtet!");
+            return userInput = "";
+        }
+    }
+
 
     public static void exit() {
         System.out.println("Exiting the dungeon.");
