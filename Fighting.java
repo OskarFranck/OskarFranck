@@ -41,22 +41,22 @@ public class Fighting extends GenerateMonster{
         //if (DungeonRunMain.classCharacters.)
 
             if (DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice() == 1) {
-                player[0] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getInitiative();
-                player[1] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getAttack();
-                player[2] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getAgility();
-                player[3] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getHealth();
+                player[0] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getInitiative();
+                player[1] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAttack();
+                player[2] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAgility();
+                player[3] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getHealth();
 
             } else if (DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice() == 2) {
-                player[0] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getInitiative();
-                player[1] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getAttack();
-                player[2] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getAgility();
-                player[3] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getHealth();
+                player[0] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getInitiative();
+                player[1] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAttack();
+                player[2] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAgility();
+                player[3] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getHealth();
 
             } else if (DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice() == 3) {
-                player[0] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getInitiative();
-                player[1] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getAttack();
-                player[2] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getAgility();
-                player[3] = DungeonRunMain.classesList.get(DungeonRunMain.indexChoice).getHealth();
+                player[0] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getInitiative();
+                player[1] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAttack();
+                player[2] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getAgility();
+                player[3] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getHealth();
             }
 
         return player;
@@ -106,8 +106,10 @@ public class Fighting extends GenerateMonster{
         double monsterIni = rollDice(monster[0]);
 
         if (playerIni < monsterIni) {
+            System.out.println("Monster is faster");
             fightingM(player, monster);
         } else if (playerIni > monsterIni) {
+            System.out.println("Player is faster");
             fightingP(player, monster);
         }
     }
@@ -156,28 +158,35 @@ public class Fighting extends GenerateMonster{
     }
 
     public static boolean tryToFlee(double agility) {
+        boolean loopIsRunning = true;
         Random rand = new Random();
-        Scanner sc = new Scanner(System.in);
         int randomGen;
         double chanceToFlee;
         int fleeInput;
         randomGen = rand.nextInt(99) + 1;
         chanceToFlee = agility * 10;
 
-        System.out.println("You see a monster, will you fight or try to flee?\n [1]. Fight [2]. Flee");
+        while(loopIsRunning){
 
-        fleeInput = sc.nextInt();
+            System.out.println("You see a monster, will you fight or try to flee?\n [1]. Fight [2]. Flee");
 
-        switch (fleeInput) {
-            case 2:
-                if (randomGen <= chanceToFlee) {
-                    return false;
-                } else {
-                    return true;
+            fleeInput = DungeonRunMain.intInputMethod();
+            if(fleeInput != 2){
+                break;
+            }else{
+                switch (fleeInput) {
+                    case 2:
+                        if (randomGen <= chanceToFlee) {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    //default:
+                    //    return true;
                 }
-            default:
-                return true;
+            }
         }
+        return true;
     }
 
 
