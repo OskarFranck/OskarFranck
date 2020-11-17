@@ -11,18 +11,16 @@ public class ChoosingCharacter extends DungeonRunMain{
             in.close();
             fileIn.close();
         } catch (IOException var3) {
-            var3.printStackTrace();
+            //var3.printStackTrace();
         } catch (ClassNotFoundException var4) {
             System.out.println("Did not find character");
-            var4.printStackTrace();
+            //var4.printStackTrace();
         }
     }
 
     public static void createCharacter(){
 
-        if(DungeonRunMain.classCharacters.isEmpty()){
 
-        }else{
 
             try {
                 FileInputStream fileIn = new FileInputStream("SavedCharacters.ser");
@@ -31,12 +29,12 @@ public class ChoosingCharacter extends DungeonRunMain{
                 in.close();
                 fileIn.close();
             } catch (IOException var3) {
-                var3.printStackTrace();
+                //var3.printStackTrace();
             } catch (ClassNotFoundException var4) {
                 System.out.println("Did not find character");
-                var4.printStackTrace();
+                //var4.printStackTrace();
             }
-        }
+
 
 
 
@@ -78,10 +76,9 @@ public class ChoosingCharacter extends DungeonRunMain{
                     characterClassLoop2 = false;
                 }
                 else{
-                    System.out.println("\tName already exists, choose another");
+                    System.out.println("\tName already exists, you must go your own path! And create your own legacy " + name + " from guild: " + DungeonRunMain.classesList.get(characterClass).getClass().toString() + "...");
                 }
             }
-
         }
 
         Characters freshCharacter = new SavedCharacters(name, 0, characterClass, 0, 0);
@@ -94,11 +91,8 @@ public class ChoosingCharacter extends DungeonRunMain{
             out.close();
             fileOut.close();
         } catch (IOException var7) {
-            var7.printStackTrace();
+            //var7.printStackTrace();
         }
-
-
-
     }
 
     public static int loadCharacter(){
@@ -112,10 +106,10 @@ public class ChoosingCharacter extends DungeonRunMain{
             in.close();
             fileIn.close();
         } catch (IOException var3) {
-            var3.printStackTrace();
+            //var3.printStackTrace();
         } catch (ClassNotFoundException var4) {
             System.out.println("\tDid not find any characters");
-            var4.printStackTrace();
+            //var4.printStackTrace();
         }
 
         while (loopIsRunning){

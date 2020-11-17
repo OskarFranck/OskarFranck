@@ -17,6 +17,7 @@ public class Sound {
                     clip = AudioSystem.getClip();
                     clip.open(audioInput);
                     play();
+                    clip.loop(Clip.LOOP_CONTINUOUSLY);
                     //musicOn = true;
                     //clip.loop(Clip.LOOP_CONTINUOUSLY);
 
@@ -37,30 +38,6 @@ public class Sound {
             musicOff = false;
         } else if (!musicOff){
             stop();
-            /*try {
-                File musicPath = new File(musicLocation);
-                if (musicPath.exists()) {
-                    AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-                    clip = AudioSystem.getClip();
-                    clip.open(audioInput);
-                    play();
-                    //musicOn = true;
-                    //clip.loop(Clip.LOOP_CONTINUOUSLY);
-
-//                System.out.println("\t[0] - To Play Music");
-//                int stopMusic = DungeonRunMain.intInputMethod();
-//                if (stopMusic == 0) {
-//                    play();
-//                } else {
-//                    stop();
-//                }
-                } else {
-                    System.out.println("ERROR! - Can't find music-file!");
-                }
-            }
-            catch(Exception ex){
-                ex.printStackTrace();
-            }*/
             musicOff = true;
         }
     }

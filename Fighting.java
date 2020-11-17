@@ -2,30 +2,12 @@ import java.util.*;
 
 public class Fighting extends GenerateMonster{
 
-    /*
-    static Monster giantSpider = new Giantspider (7, 1, 2, 3);
-    static Monster skeleton = new Skeleton (4, 2, 3, 3);
-    static Monster orc = new Orc (6, 3, 4, 4);
-    static Monster troll = new Troll (2, 4, 7, 2);
-    */
-
-    static Classes newPlayer = null;
-    static ArrayList<Integer> orderForFight = new ArrayList<>();
-
-    /*
-    1. riddare
-    2. trollkarl
-    3. tjuv
-    */
-
     public static void fightMainBody(int monsterCount){
 
         for (int i = 0; i < monsterCount; i++) {
-           // getPlayer();
-
-           // getMonster();
             whoStartsFight(getPlayer(), getMonster());
         }
+        win();
     }
 
 
@@ -37,8 +19,6 @@ public class Fighting extends GenerateMonster{
         //Hp                = 3
         //Treasure          = 4?
         //Monsters slain    = 5?
-
-        //if (DungeonRunMain.classCharacters.)
 
             if (DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice() == 0) {
                 player[0] = DungeonRunMain.classesList.get(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getClassChoice()).getInitiative();
@@ -121,15 +101,14 @@ public class Fighting extends GenerateMonster{
         if (playerAttack > monsterDefend) {
             monster[3] = monster[3] - 1;
             System.out.println("The player swings his sword and HITS!\nMonster loses one HP\nHP left: "+ monster[3]);
-           // System.out.println("Monster loses one HP");
-           // System.out.println("HP left: " + monster[3]);
+            soundHit1();
             if (monster[3] <= 0) {
                 System.out.println("The beast falls dead to the ground");
+                mobDead();
             }
         } else {
             System.out.println("The player swings his sword and MISSES!\nMonster Dodges\nHP left: "+ monster[3]);
-           // System.out.println("Monster Dodges");
-           // System.out.println("HP left: " + monster[3]);
+            soundHit2();
         }
     }
 
@@ -140,22 +119,24 @@ public class Fighting extends GenerateMonster{
         if (monsterAttack > playerDefend) {
             player[3] = player[3] - 1;
             System.out.println("The monster swings his club at you and HITS!\nPlayer loses one HP\nHP left: " + player[3]);
-           // System.out.println("Player loses one HP");
-           // System.out.println("HP left: " + player[3]);
-            if (player[3] <= 1) {
+            soundHit2();
+            if (player[3] == 1) {
                 System.out.println("You've lost a lot of blood and will soon perish");
             } else if (player[3] <= 0) {
-                System.out.println("You are DEAD!");
-
+                System.out.println("You are DEAD!\nGame Over!");
+                dead();
+                DungeonRunMain.exit();
             }
         } else {
             System.out.println("The monster swings his club at you and MISSES!\nPlayer dodges\nHP left: " + player[3]);
-           // System.out.println("Player dodges");
-           // System.out.println("HP left: " + player[3]);
         }
     }
     public static void fightingM(double[] player, double[] monster) {
         while (monster[3] > 0 && player[3] > 0 && tryToFlee(player[2])) {
+
+            if (monster[3] <= 0 || player[3] <= 0) {
+                break;
+            }
             monsterAttack(player, monster);
             playerAttack(player, monster);
         }
@@ -163,6 +144,10 @@ public class Fighting extends GenerateMonster{
 
     public static void fightingP(double[] player, double[] monster) {
         while (monster[3] > 0 && player[3] > 0 && tryToFlee(player[2])) {
+
+            if (monster[3] <= 0 || player[3] <= 0) {
+                break;
+            }
             playerAttack(player, monster);
             monsterAttack(player, monster);
         }
@@ -189,13 +174,13 @@ public class Fighting extends GenerateMonster{
                     case 2:
                         if (randomGen <= chanceToFlee) {
                             System.out.println("You manage to escaped...");
+                            win();
                             return false;
                         } else {
                             System.out.println("You can't run, stay and fight you coward!");
+                            soundHit2();
                             return true;
                         }
-                    //default:
-                    //    return true;
                 }
             }
         }
@@ -244,6 +229,42 @@ public class Fighting extends GenerateMonster{
     }
 
      */
+
+    public static void soundHit1(){
+        String filePath = "hit.wav";   //kod som kallar på slag
+        Sound hit = new Sound();
+        Sound.setFx(filePath);
+        enter();
+    }
+
+    public static void soundHit2(){
+        String filePath = "danger.wav";   //kod som kallar på slag
+        Sound hit = new Sound();
+        Sound.setFx(filePath);
+        enter();
+
+    }
+
+    public static void mobDead(){
+        String filePath = "RaspyHit.wav";
+        Sound mobDead = new Sound();
+        Sound.setFx(filePath);
+        enter();
+    }
+
+    public static void dead(){
+        String filePath = "dead.wav";
+        Sound dead = new Sound();
+        Sound.setFx(filePath);
+    }
+
+    public static void win(){
+        String filePath = "powerUp.wav";
+        Sound win = new Sound();
+        Sound.setFx(filePath);
+        enter();
+    }
+
     public static double rollDice(double numberOfDice) {
         double diceThrow;
         double diceTotalScore = 0;
@@ -259,5 +280,15 @@ public class Fighting extends GenerateMonster{
 
         }
         return diceTotalScore;
+    }
+
+    public static void enter(){
+        System.out.println("Click [ENTER] to continue... ");
+        try
+        {
+            System.in.read();
+        }
+        catch(Exception e)
+        {}
     }
 }
