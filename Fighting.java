@@ -86,11 +86,19 @@ public class Fighting extends GenerateMonster{
         double monsterIni = rollDice(monster[0]);
 
         if (playerIni < monsterIni) {
-            System.out.println("Monster is faster and attack first");
-            fightingM(player, monster);
+            for (int i = 0; i < GenerateMonster.monster.size(); i++) {
+                if (GenerateMonster.monster.get(i).getDurability() != 0) {
+                    System.out.println("Monster is faster and attack first");
+                    fightingM(player, monster);
+                }
+            }
         } else if (playerIni > monsterIni) {
-            System.out.println("Player is faster and attack first");
-            fightingP(player, monster);
+            for (int i = 0; i < GenerateMonster.monster.size(); i++) {
+                if (GenerateMonster.monster.get(i).getDurability() != 0) {
+                    System.out.println("Player is faster and attack first");
+                    fightingP(player, monster);
+                }
+            }
         }
     }
 
@@ -262,6 +270,7 @@ public class Fighting extends GenerateMonster{
         String filePath = "powerUp.wav";
         Sound win = new Sound();
         Sound.setFx(filePath);
+        System.out.println("GZ you defeated all the monsters!");
         enter();
     }
 

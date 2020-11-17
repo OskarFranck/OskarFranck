@@ -96,9 +96,11 @@ public class Navigate {
         System.out.println("\nChoose: ");
         int choice = DungeonRunMain.intInputMethod();
         if (choice == 1){
+            DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).setTotalRuns(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getTotalRuns() + 1);
+            System.out.println(DungeonRunMain.classCharacters.get(DungeonRunMain.indexChoice).getTotalRuns());
             ChoosingCharacter.saveCurrentCharacter();
-            System.out.println("Character " + ChoosingCharacter.classCharacters.get(DungeonRunMain.indexChoice).getName() + " escaped successfully and was added to the database.");
-            DungeonRunMain.exit();
+            String[] arguments = new String[] {"123"};
+            DungeonRunMain.main(arguments);
         }
     }
 }
